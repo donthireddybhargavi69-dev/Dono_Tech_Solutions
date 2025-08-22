@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Log in' %}{% endblock %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 400px;">
+    <h2 class="mb-4">{% trans 'Log in' %}</h2>
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% trans "Please correct the error below." %}
+        </div>
+    {% endif %}
+    <form method="post" action="{% url 'admin:login' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_username">{% trans 'Username:' %}</label>
+            <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" class="form-control" required id="id_username" />
+        </div>
+        <div class="form-group">
+            <label for="id_password">{% trans 'Password:' %}</label>
+            <input type="password" name="password" autocomplete="current-password" class="form-control" required id="id_password" />
+        </div>
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        {% endif %}
+        <button type="submit" class="btn btn-primary mt-3">{% trans 'Log in' %}</button>
+    </form>
+</div>
+{% endblock %}

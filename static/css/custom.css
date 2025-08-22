@@ -1,0 +1,297 @@
+/* Base Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #343a40;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px 10px 0 0 !important;
+    padding: 1.25rem 1.5rem;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Form Styling */
+.form-control {
+    border-radius: 5px;
+    padding: 10px 15px;
+    border: 1px solid #d1d3e2;
+}
+
+.form-control:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #5a5c69;
+}
+
+/* Button Styling */
+.btn {
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background-color: #4e73df;
+    border-color: #4e73df;
+}
+
+.btn-primary:hover {
+    background-color: #2e59d9;
+    border-color: #2653d4;
+}
+
+.btn-secondary {
+    background-color: #86878d;
+    border-color: #858796;
+}
+
+.btn-secondary:hover {
+    background-color: #4e5458;
+    border-color: #737b83;
+}
+
+.btn-danger {
+    background-color: #e74a3b;
+    border-color: #e74a3b;
+}
+
+.btn-danger:hover {
+    background-color: #d52a1b;
+    border-color: #cc281a;
+}
+
+/* Table Styling */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table th {
+    background-color: #f8f9fc;
+    color: #5a5c69;
+    font-weight: 600;
+    border-top: 1px solid #e3e6f0;
+}
+
+/* Alert Messages */
+.alert {
+    border-radius: 5px;
+    padding: 12px 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card {
+        margin: 0 10px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* Custom Utility Classes */
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem !important;
+}
+
+/* File Upload Styling */
+.custom-file-label::after {
+    content: "Browse";
+    background-color: #4e73df;
+    color: white;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Image Preview */
+.img-preview {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+}
+
+/* Course Specific Styling */
+.course-section {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1.5rem;
+}
+
+.course-section:last-child {
+    border-bottom: none;
+}
+
+.section-title {
+    color: #007bff;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.course-details {
+    padding-left: 1rem;
+}
+
+.detail-item {
+    margin-bottom: 0.5rem;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #5a5c69;
+    min-width: 100px;
+    display: inline-block;
+}
+
+.course-description {
+    line-height: 1.6;
+    padding-left: 1rem;
+}
+
+.btn i {
+    margin-right: 5px;
+}
+
+/* Certificate Specific Styling */
+.certificate-section {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1.5rem;
+}
+
+.certificate-section:last-child {
+    border-bottom: none;
+}
+
+.certificate-details {
+    padding-left: 1rem;
+}
+
+.download-btn {
+    margin-left: 10px;
+}
+
+/* Course Listing Page Styling */
+.page-title {
+    color: #007bff;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.course-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.course-title {
+    color:#007bff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.course-meta .badge {
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.course-description {
+    color: #6c757d;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .course-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Certificate Listing Page Styling */
+.certificate-card {
+    transition: transform 3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Added HeroSlider-like styles for Prestigious Awards and Mentor Profile */
+
+.slick-slide > div {
+    position: relative !important;
+    color: white !important;
+}
+
+.slick-dots {
+    bottom: 25px !important;
+}
+
+.slick-dots li button:before {
+    color: white !important;
+    font-size: 10px !important;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #f7b500 !important;
+}
+
+.slick-arrow {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 50% !important;
+    width: 30px !important;
+    height: 30px !important;
+    z-index: 1 !important;
+    display: none !important; /* Hide arrows as per user request */
+}
+
+.slick-arrow:hover, .slick-arrow:focus {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.slick-prev {
+    left: 10px !important;
+}
+
+.slick-next {
+    right: 10px !important;
+}

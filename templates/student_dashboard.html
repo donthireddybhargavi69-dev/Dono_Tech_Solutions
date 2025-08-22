@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block title %}Student Dashboard{% endblock %}
+{% block content %}
+<div class="dashboard-wrapper" style="display: flex; min-height: 80vh;">
+
+<aside class="sidebar">
+    <nav>
+        <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a href="{% url 'logout' %}" class="sidebar-link">
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>
+
+    <main class="dashboard-container" style="flex-grow: 1; padding: 40px;">
+        <h2>Welcome, {{ student_profile.user}}!</h2>
+        {% if student_profile.profile_image %}
+            <img src="{{ student_profile.profile_image.url }}" alt="Profile" width="100" height="100" style="object-fit:cover; border-radius:50%;">
+        {% endif %}
+        <p>Email: {{ student_profile.email }}</p>
+        <p>Department: {{ student_profile.department }}</p>
+        <p>Year/Semester: {{ student_profile.year_semester }}</p>
+        <p>Courses Registered: 
+            {% if student_profile.courses_registered.all %}
+                {% for course in student_profile.courses_registered.all %}
+                    {{ course.title }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            {% else %}
+                No courses registered.
+            {% endif %}
+        </p>
+    </main>
+
+</div>
+
+{% block extra_css %}
+<style>
+.content-wrapper {
+    padding: 0 !important;
+}
+.dashboard-container {
+    background: linear-gradient(to right, #f8fafc, #e0e7ef);
+    border: 1px solid #b3c6e0;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 132, 255, 0.08);
+    text-align: center;
+}
+.dashboard-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ad1457;
+    margin-bottom: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background-color: #1b1f3a;
+    color: #ffffff;
+    padding: 20px;
+    overflow-y: auto;
+}
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar-item {
+    margin-bottom: 15px;
+    color: #ffffff;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;   
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+.sidebar-link .icon {
+    font-size: 18px;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar-link:hover {
+    background-color: #e0e7ff;
+    color: #1b1f3a;
+}
+.sidebar-item.active .sidebar-link {
+    background-color: #0a9af4;
+    color: #ffffff;
+}
+.sidebar-link:hover {
+    background-color: #0a9af4;
+    color: #ffffff;
+}
+.sidebar-item.active .sidebar-link {
+    background-color: #0a9af4;
+    color: #ffffff;
+}
+.sidebar-link:hover {
+    background-color: #0a9af4;
+    color: #ffffff;
+}
+
+</style>
+{% endblock %}
+
+{% endblock %}

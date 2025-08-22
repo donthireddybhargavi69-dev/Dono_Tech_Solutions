@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="contact-hero text-center py-5 mb-5">
+    <div class="container">
+        <a href="{% url 'home' %}" class="btn btn-light mb-3" style="color:#6e48aa; font-weight: 600; border-radius: 6px; padding: 0.5rem 1rem; text-decoration: none; display: inline-block;">&larr; Back to Home</a>
+        <h1 class="display-4 fw-bold mb-3">Contact Us</h1>
+        <p class="lead mb-4">We'd love to hear from you! Reach out with any questions or feedback.</p>
+    </div>
+</section>
+
+<section class="contact-form container mb-5">
+    <div class="card shadow-sm p-4">
+        <h2 class="mb-4">Send Us a Message</h2>
+        {% if messages %}
+        <div>
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form method="POST" action="{% url 'contact' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<section class="contact-info container mb-5">
+    <div class="card shadow-sm p-4 text-center">
+        <h2 class="mb-3">Our Contact Information</h2>
+        <p style="color: black;">Email: <a href="mailto:contact@donotech.com">contact@donotech.com</a></p>
+        <p style="color: black;"> Phone:+91 8074101457</p>
+        <p style="color: black;">Address:Dwaraka Tower, Kadapa, India</p>
+    </div>
+</section>
+{% endblock %}

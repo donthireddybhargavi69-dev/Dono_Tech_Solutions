@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block title %}Programs - DONOTECH SOLUTIONS{% endblock %}
+
+{% block content %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+        color: white;
+        padding: 5rem 0;
+        margin-bottom: 3rem;
+    }
+    
+    .section-card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 2rem;
+    }
+    
+    .section-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+    
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .card-body {
+        padding: 2rem;
+    }
+    
+    .card-title {
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #2c3e50;
+    }
+    
+    .card-text {
+        color: #7f8c8d;
+        margin-bottom: 1.5rem;
+    }
+    
+    .btn-primary {
+        background-color: #6e48aa;
+        border-color: #6e48aa;
+        padding: 0.5rem 1.5rem;
+        font-weight: 600;
+    }
+    
+    .btn-primary:hover {
+        background-color: #5d3a99;
+        border-color: #5d3a99;
+    }
+    
+    .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+    
+    .section-header h1 {
+        font-weight: 800;
+        color: #2c3e50;
+        position: relative;
+        display: inline-block;
+    }
+    
+    .section-header h1:after {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #6e48aa 0%, #9d50bb 100%);
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+    
+    .section-header p {
+        color: #7f8c8d;
+        max-width: 700px;
+        margin: 1.5rem auto 0;
+    }
+/* Add to your existing CSS */
+.testimonial-quote {
+    font-style: italic;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.testimonial-quote:before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -0.5rem;
+    font-size: 2rem;
+    color: rgba(0,0,0,0.1);
+}
+</style>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center">
+        <a href="{% url 'home' %}" class="btn btn-light mb-3" style="color:#6e48aa; font-weight: 600; border-radius: 6px; padding: 0.5rem 1rem; text-decoration: none; display: inline-block;">&larr; Back to Home</a>
+        <h1 class="display-4 fw-bold mb-3">Our Professional Programs</h1>
+        <p class="lead mb-4">Comprehensive learning and career development solutions designed to propel your professional journey forward.</p>
+    </div>
+</section>
+
+<!-- Programs Grid -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Courses Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="section-card h-100">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Professional Courses">
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title">Professional Courses</h3>
+                        <p class="card-text">Enhance your skills with our specialized courses designed by industry experts to meet current market demands.</p>
+                        <div class="mt-auto">
+                            <a href="{% url 'courses' %}" class="btn btn-primary">View Courses</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Internship Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="section-card h-100">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Internship Programs">
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title">Internship Programs</h3>
+                        <p class="card-text">Gain practical experience through our comprehensive internship programs bridging academic learning and professional requirements.</p>
+                        <div class="mt-auto">
+                            <a href="{% url 'internship' %}" class="btn btn-primary">Explore Internships</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Jobs Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="section-card h-100">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Career Opportunities">
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title">Career Opportunities</h3>
+                        <p class="card-text">Discover exciting job opportunities and kickstart your career with our placement assistance programs.</p>
+                        <div class="mt-auto">
+                            <a href="{% url 'jobs' %}" class="btn btn-primary">View Openings</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projects Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="section-card h-100">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Real-time Projects">
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title">Real-time Projects</h3>
+                        <p class="card-text">Work on industry-relevant projects with expert guidance to build your portfolio and gain practical experience.</p>
+                        <div class="mt-auto">
+                            <a href="{% url 'projects' %}" class="btn btn-primary">Browse Projects</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Strategy Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="section-card h-100">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Future Strategy">
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="card-title">Future Strategy</h3>
+                        <p class="card-text">Our roadmap for continuous improvement and innovation to help you stay ahead in your career.</p>
+                        <div class="mt-auto">
+                            <a href="{% url 'strategy' %}" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+<!-- CTA Section -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Ready to Transform Your Career?</h2>
+        <p class="lead mb-4">Join thousands of professionals who have accelerated their careers with our programs.</p>
+        <a href="{% url 'login' %}" class="btn btn-primary btn-lg px-4">Get Started Today</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block title %}Course Curriculum - DONOTECH SOLUTIONS{% endblock %}
+
+{% block content %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+        color: white;
+        padding: 5rem 0;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .section-card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .section-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-body {
+        padding: 2rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-title {
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #2c3e50;
+    }
+
+    .card-text {
+        color: #7f8c8d;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .tools-text {
+        font-style: italic;
+        color: #95a5a6;
+        margin-top: auto;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .section-header h1 {
+        font-weight: 800;
+        color: #2c3e50;
+        position: relative;
+        display: inline-block;
+    }
+
+    .section-header h1:after {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #6e48aa 0%, #9d50bb 100%);
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 2px;
+    }
+
+    .section-header p {
+        color: #7f8c8d;
+        max-width: 700px;
+        margin: 1.5rem auto 0;
+    }
+
+    .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    h3.year-header {
+        margin-top: 3rem;
+        color: #6e48aa;
+        font-weight: 800;
+        border-bottom: 2px solid #9d50bb;
+        padding-bottom: 0.5rem;
+    }
+
+    h4.semester-header {
+        margin-top: 2rem;
+        color: #2c3e50;
+        font-weight: 700;
+    }
+    </style>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <a href="{% url 'programs' %}" class="btn btn-light mb-3" style="color:#6e48aa; font-weight: 600; border-radius: 6px; padding: 0.5rem 1rem; text-decoration: none; display: inline-block;">&larr; Back to Programs</a>
+            <h1 class="display-4 fw-bold mb-3">Course Curriculum</h1>
+            <p class="lead mb-4">Explore our comprehensive 4-year curriculum designed to equip you with the skills and knowledge for success.</p>
+        </div>
+    </section>
+
+<div class="container">
+    {% for year in years %}
+        <h3 class="year-header">Year {{ year.number }}</h3>
+        {% for semester in year.semesters.all %}
+            <section class="mb-5">
+                <h4 class="semester-header">Semester {{ semester.number }}</h4>
+                <div class="courses-grid">
+                    {% for item in semester.course_items.all %}
+                        <div class="section-card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.title }}</h5>
+                                {% if item.description %}
+                                    <p class="card-text">{{ item.description }}</p>
+                                {% else %}
+                                    <p class="card-text text-muted">No description available.</p>
+                                {% endif %}
+                                {% if item.tools %}
+                                    <p class="tools-text">Tools: {{ item.tools }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endfor %}
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <style>
+        .section {
+            padding: 10px 0;
+        }
+        .section-title {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        .section-title h2 {
+            font-weight: 700;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #3498db;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px;
+            margin-bottom:20px;
+            text-align: center;
+        }
+        .mentor-card, .experience-card {
+            transition: transform 0.3s;
+            margin-bottom: 30px;
+        }
+        .mentor-card:hover, .experience-card:hover {
+            transform: translateY(-10px);
+        }
+        .tieup-logo {
+            height: 80px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        .tieup-logo:hover {
+            filter: grayscale(0%);
+        }
+         #companies-prefer .section-title h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    #companies-prefer .section-title h2 {
+        font-size: 2rem;
+        font-weight: 500;
+        color: #1286d3;
+    }
+    
+    #companies-prefer .lead {
+        font-size: 1.1rem;
+        color: #666;
+    }
+    
+    .milestone-box h3 {
+        font-size: 1.3rem;
+        color: #333;
+    }
+    
+    .milestone-box h4 {
+        font-size: 1.1rem;
+    }
+    
+    .experience-card {
+        transition: transform 0.3s;
+    }
+    
+    .experience-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .video-thumbnail {
+        overflow: hidden;
+    }
+    
+    .video-thumbnail img {
+        transition: transform 0.3s;
+    }
+    
+    .video-thumbnail:hover img {
+        transform: scale(1.05);
+    }
+</style>
+</head>
+<body>
+    <!-- Section 1: Institution Name and Details -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4">{{ institution_name }}</h1>
+            <p class="lead mb-5">{{ institution_details }}</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="{% url 'contact' %}" class="btn btn-primary btn-lg px-4">Contact Us</a>
+                <a href="{% url 'programs' %}" class="btn btn-outline-light btn-lg px-4">Our Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Tie-ups -->
+    <section id="tieups" class="section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Industry Tie-ups</h2>
+                <p class="text-muted">We collaborate with leading companies to provide the best opportunities</p>
+            </div>
+            <div class="milestone-box text-center p-4 mb-5" style="background-color: #f8f9fa; border-left: 8px solid #1286d3;margin-bottom:10px;margin-right: 50px;">
+            <div class="d-flex justify-content-center">
+                <div class="mx-6">
+                    <h4 class="text-primary">Collaboration With 50+ Companies</h4>
+                </div>
+            </div>
+            <div class="row justify-content-center" style="margin-top: 50px;">
+                {% for tieup in tieups %}
+                <div class="col-3 col-md-3 col-lg-2 text-center mb-4">
+                    <img src="{{ tieup.logo.url }}" alt="" class="img-fluid tieup-logo">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Learners Experience -->
+<section id="companies-prefer" class="section" style="background-color: white;">
+    <div class="container">
+        <div class="section-title text-center">
+<h1 class="main-heading">Hear <span class="highlight">DONOTECH</span> learners' experiences</h1>
+<p class="subheading">Our students have redefined excellence in the tech workforce</p>
+<p class="testimonial-callout">Hear firsthand testimonials from our Students</p>
+        </div>
+        </div>
+
+        <!-- Video Cards Section -->
+        <div class="row">
+            {% for experience in experiences %}
+            <div class="col-4 col-md-3 col-lg-2 text-center mb-4">
+                <div class="card experience-card h-100 border-0 shadow-sm">
+                    <div class="video-thumbnail position-relative">
+                        <img src="{{ experience.thumbnail.url }}" class="card-img-top" alt="{{ experience.name }}">
+                        <div class="play-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ experience.name }}</h5>
+                        <p class="text-muted">{{ experience.role }} at {{ experience.company }}</p>
+                        <blockquote class="blockquote">
+                            <p>"{{ experience.quote|truncatewords:30 }}"</p>
+                        </blockquote>
+                        <a href="{{ experience.video_url }}" target="_blank" class="btn btn-primary btn-sm">
+                            Watch on <span class="font-weight-bold">Double</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+    <!-- Section 6: Mentors Community -->
+    <section id="community" class="section bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mentors Community</h2>
+                <p class="text-muted">Representing top companies in the industry</p>
+            </div>
+            <div class="row">
+                {% for staff in staffs %}
+                <div class="col-4 col-md-3 col-lg-2 text-center mb-4">
+                    <div class="p-3 bg-white rounded shadow-sm">
+                        <img src="{{ staff.profile_pic.url }}" class="card-img-top" alt="{{ staff.name }}">
+                        <h6 class="mb-0">{{ staff.name }}</h6>
+                        <small class="text-muted">{{ staff.position }}</small>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+            <div class="text-center mt-4 text-muted small">
+            <p>By continuing to use this website, you accept our Terms and Cookie Policy.</p>
+        </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}
