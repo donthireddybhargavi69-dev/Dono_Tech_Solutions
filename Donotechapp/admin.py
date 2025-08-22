@@ -1,11 +1,10 @@
 from django.contrib import admin
-from .models import UserProfile, Student, CourseItem
-from .models import TieUp, StudentExperience, Staff
+from .models import UserProfile, Student, CourseItem, Mentor
+from .models import TieUp
 
 
 admin.site.register(TieUp)
-admin.site.register(StudentExperience)
-admin.site.register(Staff)
+
 
 
 @admin.register(UserProfile)
@@ -20,10 +19,18 @@ class StudentAdmin(admin.ModelAdmin):
         return ", ".join([course.title for course in obj.courses_registered.all()])
     course_enrolled_display.short_description = 'Courses Enrolled'
 
+@admin.register(Mentor)
+class MentorAdmin(admin.ModelAdmin):
+    list_display = ('user', 'full_name', 'email', 'phone_number')
 
 @admin.register(CourseItem)
 class CourseItemAdmin(admin.ModelAdmin):
     list_display = ('title', 'semester', 'description', 'tools')
+
+
+
+
+
 
 
 

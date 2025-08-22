@@ -5,12 +5,25 @@ from django.utils import timezone
 class UserProfile(models.Model):
     ROLE_CHOICES = [
         ('STUDENT', 'STUDENT'),
+        ('MENTOR', 'MENTOR'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='STUDENT')
 
     def __str__(self):
         return f"{self.user.username} - {self.role}"
+
+class Mentor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=150, unique=True, blank=True, null=True)
+    full_name = models.CharField(max_length=100, default="Mentor User")
+    email = models.EmailField(default="mentor@gmail.com")
+    phone_number = models.CharField(max_length=20, default="0000000000")
+    profile_image = models.ImageField(upload_to='mentor_profiles/', blank=True, null=True)
+    registration_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"Mentor: {self.user.username}"
 
 
 
@@ -54,7 +67,7 @@ class Student(models.Model):
     phone_number = models.CharField(max_length=20, default="0000000000")
     gender = models.CharField(max_length=10, choices=[('Male','Male'),('Female','Female'),('Other','Other')], blank=True, default="Other")
     date_of_birth = models.DateField(blank=True, null=True, default=timezone.now)
-    college = models.CharField(max_length=255, default="Your Institution Name")
+    college = models.CharField(max_length=255, default="Your College Name")
     department = models.CharField(max_length=100, default="Department")
     YEAR_SEMESTER_CHOICES = [
         ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'), ('7', '7'), ('8', '8')
@@ -63,25 +76,33 @@ class Student(models.Model):
     courses_registered = models.ManyToManyField(CourseItem, blank=True)
     profile_image = models.ImageField(upload_to='student_profiles/', blank=True, null=True)
     registration_date = models.DateTimeField(default=timezone.now)
+    mentor = models.ForeignKey('Mentor', on_delete=models.SET_NULL, null=True, blank=True, related_name='students')
+
     def __str__(self):
         return f"Student: {self.user.username}"
 
 
-from django.db import models
+
 from django_resized import ResizedImageField
+from django.utils import timezone
 
 class TieUp(models.Model):
     logo = models.ImageField(upload_to='tieups/')
+    name = models.CharField(max_length=100, blank=True, null=True)
 
-class StudentExperience(models.Model):
-    name = models.CharField(max_length=100)
-    role = models.CharField(max_length=100)
-    company = models.CharField(max_length=100)
-    video_url = models.URLField()
-    thumbnail = models.ImageField(upload_to='experiences/')
-    quote = models.TextField()
 
-class Staff(models.Model):
-    name = models.CharField(max_length=100)
-    position = models.CharField(max_length=100)
-    profile_pic = ResizedImageField(size=[300, 300], upload_to='staffs/')
+
+
+class CourseProgress(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='progress')
+    course = models.ForeignKey(CourseItem, on_delete=models.CASCADE)
+    progress = models.PositiveIntegerField(default=0)
+    last_updated = models.DateTimeField(auto_now=True)
+    notes = models.TextField(blank=True)
+
+    class Meta:
+        unique_together = ('student', 'course')
+        verbose_name_plural = 'Course Progress'
+        
+    def __str__(self):
+        return f"{self.student.user.username} - {self.course.title} ({self.progress}%)"

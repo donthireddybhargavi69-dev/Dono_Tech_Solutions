@@ -1,11 +1,16 @@
-
-
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Year, CourseItem
+from .models import Year, CourseItem, Student
 from .forms import CourseForm
+from django.contrib.admin.views.decorators import staff_member_required
 
+@login_required
+def mycourses(request):
+    student = get_object_or_404(Student, user=request.user)
+    courses = student.courses_registered.all().select_related('semester__year')
+    return render(request, 'my_courses.html', {'courses': courses})
+    
 def programs(request):
     return render(request, 'programs.html')
 
@@ -28,7 +33,8 @@ def projects(request):
 def strategy(request):
     return render(request, 'strategy.html')
 
-
+def about(request):
+    return render(request, 'about.html')
 
 @staff_member_required
 def course_detail(request, pk):
@@ -84,9 +90,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.shortcuts import render
-from .models import TieUp, StudentExperience, Staff
+from .models import TieUp
 from django.core.mail import send_mail
 from django.conf import settings
+
+
 
 
 def contact(request):
@@ -124,8 +132,8 @@ def home(request):
         'institution_details': "DONOTECH SOLUTIONS is a premier placement and training institute dedicated to bridging the gap between academia and industry. We provide cutting-edge training programs and placement assistance to help students launch successful careers in technology.",
         
         'tieups': TieUp.objects.all(),
-        'staffs': Staff.objects.all(),
-        'experiences': StudentExperience.objects.all(),
+      
+        # 'experiences': StudentExperience.objects.all(),
     }
     return render(request, 'home.html', context)
 
@@ -170,7 +178,7 @@ def login_view(request):
         role = request.POST.get('role', '').strip()
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            from .models import Student
+            from .models import Student, Mentor
             # Try to get or create UserProfile
             profile, created = UserProfile.objects.get_or_create(user=user, defaults={'role': role})
             if not created and profile.role != role:
@@ -179,10 +187,14 @@ def login_view(request):
             # Validate extra fields for student role and create missing profile if needed
             if role == 'STUDENT':
                 student, s_created = Student.objects.get_or_create(user=user)
+            elif role == 'MENTOR':
+                mentor, m_created = Mentor.objects.get_or_create(user=user)
             login(request, user)
-            # Redirect to student dashboard
+            # Redirect to respective dashboards
             if role == 'STUDENT':
                 return redirect('student_dashboard')
+            elif role == 'MENTOR':
+                return redirect('mentor_dashboard')
             else:
                 return redirect('dashboard')
         else:
@@ -221,15 +233,66 @@ def role_required(role):
 
 
 
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+
 @role_required('STUDENT')
 def student_dashboard(request):
-    from .models import Student
+    from .models import Student, CourseProgress
     student_profile = None
+    courses_with_progress = []
+    completed_courses_count = 0
+    mentor = None
+    
     try:
         student_profile = Student.objects.get(user=request.user)
+        mentor = student_profile.mentor
+        
+        # Get courses with progress
+        registered_courses = student_profile.courses_registered.all()
+        for course in registered_courses:
+            progress, created = CourseProgress.objects.get_or_create(
+                student=student_profile,
+                course=course,
+                defaults={'progress': 0}
+            )
+            courses_with_progress.append({
+                'course': course,
+                'progress': progress.progress,
+                'id': progress.id  # Add progress record ID for editing
+            })
+            if progress.progress == 100:
+                completed_courses_count += 1
+                
     except Student.DoesNotExist:
         pass
-    return render(request, 'student_dashboard.html', {'student_profile': student_profile})
+        
+    return render(request, 'student_dashboard.html', {
+        'student_profile': student_profile,
+        'courses_with_progress': courses_with_progress,
+        'completed_courses_count': completed_courses_count,
+        'mentor': mentor
+    })
+
+@login_required
+def update_course_progress(request):
+    if request.method == 'POST':
+        progress_id = request.POST.get('progress_id')
+        new_progress = request.POST.get('progress')
+        
+        try:
+            progress = get_object_or_404(CourseProgress, id=progress_id)
+            if progress.student.user != request.user:
+                return JsonResponse({'success': False, 'error': 'Unauthorized'})
+                
+            progress.progress = min(100, max(0, int(new_progress)))
+            progress.save()
+            return JsonResponse({'success': True, 'new_progress': progress.progress})
+            
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request'})
 # Student details page for admin or staff
 from django.contrib.admin.views.decorators import staff_member_required
 @staff_member_required
@@ -281,3 +344,105 @@ def student_delete(request, pk):
         messages.success(request, 'Student deleted successfully!')
         return redirect('student_details')
     return render(request, 'student_confirm_delete.html', {'student': student})
+
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+import weasyprint
+import json
+
+def gen_resume(request):
+    if request.method == "POST":
+        # Process form data
+        data = {
+            "name": request.POST.get("name", ""),
+            "email": request.POST.get("email", ""),
+            "linkedin": request.POST.get("linkedin", ""),
+            "phone": request.POST.get("phone", ""),
+            "summary": request.POST.get("summary", ""),
+            "skills": [skill for skill in request.POST.getlist("skills") if skill],
+            "work_experience": [],
+            "education": [],
+            "projects": [],
+            "leadership": [item for item in request.POST.getlist("leadership") if item],
+            "achievements": [item for item in request.POST.getlist("achievements") if item],
+            "personal": {
+                "father_name": request.POST.get("father_name", ""),
+                "dob": request.POST.get("dob", ""),
+                "gender": request.POST.get("gender", ""),
+                "languages": request.POST.get("languages", ""),
+                "marital_status": request.POST.get("marital_status", ""),
+                "address": request.POST.get("address", ""),
+            },
+
+        }
+
+        # Process dynamic work experience fields
+        i = 1
+        while True:
+            role = request.POST.get(f"work_role{i}", "")
+            if not role:
+                break
+            data["work_experience"].append({
+                "role": role,
+                "company": request.POST.get(f"work_company{i}", ""),
+                "period": request.POST.get(f"work_period{i}", ""),
+                "details": request.POST.get(f"work_details{i}", ""),
+            })
+            i += 1
+        
+        # Process dynamic education fields
+        i = 1
+        while True:
+            name = request.POST.get(f"edu_name{i}", "")
+            if not name:
+                break
+            data["education"].append({
+                "name": name,
+                "period": request.POST.get(f"edu_period{i}", ""),
+                "details": request.POST.get(f"edu_details{i}", ""),
+            })
+            i += 1
+        
+        # Process dynamic project fields
+        i = 1
+        while True:
+            title = request.POST.get(f"proj_title{i}", "")
+            if not title:
+                break
+            data["projects"].append({
+                "title": title,
+                "year": request.POST.get(f"proj_year{i}", ""),
+                "description": request.POST.get(f"proj_description{i}", ""),
+            })
+            i += 1
+        
+        # Save form data in session
+        request.session['resume_form_data'] = json.dumps(data)
+        
+        # Check if user wants PDF download
+        if "download" in request.POST:
+            html_string = render_to_string("gen_resume.html", data)
+            response = HttpResponse(content_type="application/pdf")
+            response['Content-Disposition'] = f'attachment; filename="{data["name"].replace(" ", "_")}_Resume.pdf"'
+            weasyprint.HTML(string=html_string).write_pdf(response)
+            return response
+        
+        return render(request, 'gen_resume.html', data)
+    
+    # If GET request, check for saved form data
+    saved_data = request.session.get('resume_form_data', None)
+    if saved_data:
+        try:
+            form_data = json.loads(saved_data)
+            return render(request, 'resume_form.html', {'form_data': form_data})
+        except json.JSONDecodeError:
+            pass
+    
+    return render(request, 'resume_form.html')
+
+
+from django.shortcuts import render
+
+def resume_form(request):
+    return render(request, 'resume_form.html')
