@@ -163,6 +163,12 @@
         .register-container {
             padding: 2rem 1rem;
         }
+        
+        /* Adjust courses dropdown for mobile */
+        #id_courses_registered {
+            min-width: 100%;
+            max-width: 100%;
+        }
     }
 
     .register-header {
@@ -246,6 +252,19 @@
         border-color: var(--primary-color);
         box-shadow: 0 0 0 3px var(--primary-light);
         outline: none;
+    }
+
+    /* Make courses_registered dropdown wider */
+    #id_courses_registered {
+        min-width: 300px;
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    /* Ensure the dropdown options are also wide enough */
+    #id_courses_registered option {
+        white-space: normal;
+        padding: 8px 12px;
     }
 
     .password-container {

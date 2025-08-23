@@ -413,6 +413,20 @@
     }
 
     /* Responsive Adjustments */
+    @media (max-width: 1200px) {
+        .hero-section h1 {
+            font-size: 3rem;
+        }
+        
+        .hero-section p {
+            font-size: 1.3rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+        }
+    }
+
     @media (max-width: 992px) {
         .leader-info {
             padding: 1.5rem;
@@ -433,11 +447,16 @@
     
     @media (max-width: 768px) {
         .hero-section {
-            padding: 6rem 0;
+            padding: 5rem 0;
+            height: auto;
         }
         
         .hero-section h1 {
             font-size: 2.2rem;
+        }
+        
+        .hero-section p {
+            font-size: 1.1rem;
         }
         
         .timeline-year {
@@ -445,6 +464,7 @@
             display: block;
             margin-bottom: 10px;
             color: var(--primary-color);
+            font-weight: bold;
         }
         
         .timeline::before {
@@ -455,12 +475,134 @@
             left: -30px;
         }
         
-        .leadership-card .row {
+        .leadership-card .极速赛车开奖号码查询row {
             flex-direction: column;
         }
         
         .leader-img {
             height: 300px;
+        }
+        
+        .section {
+            padding: 3rem 0;
+        }
+        
+        .card {
+            margin-bottom: 1.5rem;
+        }
+        
+        .stats-counter {
+            padding: 3rem 0;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+        }
+        
+        .cta-section {
+            padding: 4rem 0;
+        }
+        
+        .cta-btn {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .hero-section {
+            padding: 4rem 0;
+        }
+        
+        .hero-section h1 {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+        
+        .hero-section p {
+            font-size: 1rem;
+            max-width: 100%;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .section-title:after {
+            width: 60px;
+            height: 4px;
+            bottom: -15px;
+        }
+        
+        .timeline {
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            left: 8px;
+        }
+        
+        .timeline-item::before {
+            left: -25px;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .timeline-item {
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card-body {
+            padding: 1.25rem;
+        }
+        
+        .stats-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+        }
+        
+        .leader-img {
+            height: 250px;
+        }
+        
+        .leader-info {
+            padding: 1.25rem;
+        }
+        
+        .leader-name {
+            font-size: 1.3rem;
+        }
+        
+        .leader-title {
+            font-size: 1rem;
+        }
+        
+        .cta-section h3 {
+            font-size: 1.8rem;
+        }
+        
+        .cta-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+        }
+        
+        .motivational-quote {
+            font-size: 1rem;
+            padding: 0.75rem;
         }
     }
     

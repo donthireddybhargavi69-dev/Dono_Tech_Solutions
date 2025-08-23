@@ -279,14 +279,28 @@
     }
 
     /* Responsive Design */
-    @media (max-width: 992px) {
+    @media (max-width: 1200px) {
         .contact-hero {
-            clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
             padding: 5rem 0;
         }
         
         .display-4 {
+            font-size: 2.75rem;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .contact-hero {
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            padding: 4.5rem 0;
+        }
+        
+        .display-4 {
             font-size: 2.5rem;
+        }
+        
+        .card {
+            padding: 2rem;
         }
     }
 
@@ -297,6 +311,7 @@
 
         .lead {
             font-size: 1.1rem;
+            max-width: 90%;
         }
 
         .contact-hero {
@@ -310,25 +325,84 @@
         .container {
             padding: 0 1.5rem;
         }
+        
+        .form-control {
+            padding: 0.875rem 1.125rem;
+        }
+        
+        .btn {
+            padding: 0.875rem 1.75rem;
+            font-size: 1rem;
+        }
     }
 
     @media (max-width: 576px) {
         .btn {
             padding: 0.75rem 1.5rem;
             font-size: 0.95rem;
+            width: 100%;
+            margin-bottom: 0.5rem;
         }
 
         .display-4 {
             font-size: 2rem;
+            line-height: 1.2;
+        }
+
+        .lead {
+            font-size: 1rem;
+            max-width: 100%;
         }
 
         .container {
-            padding: 0 1.25rem;
+            padding: 0 1rem;
         }
         
         .contact-hero {
             clip-path: polygon(0 0, 100% 0, 100% 97%, 0 100%);
-            padding: 3.5rem 0;
+            padding: 3rem 0;
+        }
+        
+        .card {
+            padding: 1.5rem;
+            margin: 0 -0.5rem;
+        }
+        
+        .form-control {
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .form-label {
+            font-size: 0.95rem;
+        }
+        
+        .alert {
+            padding: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .decorative-circle {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 400px) {
+        .display-4 {
+            font-size: 1.75rem;
+        }
+        
+        .contact-hero {
+            padding: 2.5rem 0;
+        }
+        
+        .card {
+            padding: 1.25rem;
+        }
+        
+        .btn {
+            padding: 0.625rem 1.25rem;
+            font-size: 0.9rem;
         }
     }
 </style>

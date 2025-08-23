@@ -649,21 +649,28 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-<a href="{% url 'home' %}" aria-label="DONOTECH SOLUTIONS Home" style="display: flex; align-items: center; text-decoration: none;">
-<style>
-    .company-logo {
-        height: 40px;
-        width: 100%;
-        margin-right: 10px;
-        object-fit: contain;
-        background-color: transparent; /* preserves aspect ratio */
-    }
-</style>
-
-<img src="{% get_media_prefix %}logos/TECH SOLUTIONS PVT LTD.png" 
-     alt="DONOTECH SOLUTIONS" 
-     class="company-logo">
-</a>
+            <a href="{% url 'home' %}" aria-label="DONOTECH SOLUTIONS Home" style="display: flex; align-items: center; text-decoration: none;">
+                <style>
+                    .company-logo {
+                        height: 40px;
+                        width: auto;
+                        max-width: 180px;
+                        margin-right: 10px;
+                        object-fit: contain;
+                        background-color: transparent;
+                    }
+                    
+                    @media (max-width: 576px) {
+                        .company-logo {
+                            height: 35px;
+                            max-width: 150px;
+                        }
+                    }
+                </style>
+                <img src="{% get_media_prefix %}logos/TECH SOLUTIONS PVT LTD.png" 
+                     alt="DONOTECH SOLUTIONS" 
+                     class="company-logo">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
