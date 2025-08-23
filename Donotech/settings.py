@@ -23,9 +23,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-nzl92wk@w#8dh*1c1i5sg2xcs555_e@q881gif=#-mf2m$70jg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['Donotech.com', 'www.Donotech.com']
+ALLOWED_HOSTS = ['Donotech.com', 'www.Donotech.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -146,7 +146,7 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Donotech",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "books/img/logo.png",
+    
 
     # Logo to use for login form logo (defaults to site_logo)
     "login_logo": None,

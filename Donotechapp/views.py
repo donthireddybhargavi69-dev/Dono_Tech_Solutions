@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Year, CourseItem, Student
+from .models import Year, CourseItem, Student, CourseProgress
 from .forms import CourseForm
 from django.contrib.admin.views.decorators import staff_member_required
 
@@ -345,104 +345,3 @@ def student_delete(request, pk):
         return redirect('student_details')
     return render(request, 'student_confirm_delete.html', {'student': student})
 
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.template.loader import render_to_string
-import weasyprint
-import json
-
-def gen_resume(request):
-    if request.method == "POST":
-        # Process form data
-        data = {
-            "name": request.POST.get("name", ""),
-            "email": request.POST.get("email", ""),
-            "linkedin": request.POST.get("linkedin", ""),
-            "phone": request.POST.get("phone", ""),
-            "summary": request.POST.get("summary", ""),
-            "skills": [skill for skill in request.POST.getlist("skills") if skill],
-            "work_experience": [],
-            "education": [],
-            "projects": [],
-            "leadership": [item for item in request.POST.getlist("leadership") if item],
-            "achievements": [item for item in request.POST.getlist("achievements") if item],
-            "personal": {
-                "father_name": request.POST.get("father_name", ""),
-                "dob": request.POST.get("dob", ""),
-                "gender": request.POST.get("gender", ""),
-                "languages": request.POST.get("languages", ""),
-                "marital_status": request.POST.get("marital_status", ""),
-                "address": request.POST.get("address", ""),
-            },
-
-        }
-
-        # Process dynamic work experience fields
-        i = 1
-        while True:
-            role = request.POST.get(f"work_role{i}", "")
-            if not role:
-                break
-            data["work_experience"].append({
-                "role": role,
-                "company": request.POST.get(f"work_company{i}", ""),
-                "period": request.POST.get(f"work_period{i}", ""),
-                "details": request.POST.get(f"work_details{i}", ""),
-            })
-            i += 1
-        
-        # Process dynamic education fields
-        i = 1
-        while True:
-            name = request.POST.get(f"edu_name{i}", "")
-            if not name:
-                break
-            data["education"].append({
-                "name": name,
-                "period": request.POST.get(f"edu_period{i}", ""),
-                "details": request.POST.get(f"edu_details{i}", ""),
-            })
-            i += 1
-        
-        # Process dynamic project fields
-        i = 1
-        while True:
-            title = request.POST.get(f"proj_title{i}", "")
-            if not title:
-                break
-            data["projects"].append({
-                "title": title,
-                "year": request.POST.get(f"proj_year{i}", ""),
-                "description": request.POST.get(f"proj_description{i}", ""),
-            })
-            i += 1
-        
-        # Save form data in session
-        request.session['resume_form_data'] = json.dumps(data)
-        
-        # Check if user wants PDF download
-        if "download" in request.POST:
-            html_string = render_to_string("gen_resume.html", data)
-            response = HttpResponse(content_type="application/pdf")
-            response['Content-Disposition'] = f'attachment; filename="{data["name"].replace(" ", "_")}_Resume.pdf"'
-            weasyprint.HTML(string=html_string).write_pdf(response)
-            return response
-        
-        return render(request, 'gen_resume.html', data)
-    
-    # If GET request, check for saved form data
-    saved_data = request.session.get('resume_form_data', None)
-    if saved_data:
-        try:
-            form_data = json.loads(saved_data)
-            return render(request, 'resume_form.html', {'form_data': form_data})
-        except json.JSONDecodeError:
-            pass
-    
-    return render(request, 'resume_form.html')
-
-
-from django.shortcuts import render
-
-def resume_form(request):
-    return render(request, 'resume_form.html')

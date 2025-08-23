@@ -61,22 +61,22 @@ class CourseItem(models.Model):
 # --- Main Role Models ---
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    username = models.CharField(max_length=150, unique=True, blank=True, null=True)
-    full_name = models.CharField(max_length=100, default="Student User")
-    email = models.EmailField(default="student@gmail.com")
-    phone_number = models.CharField(max_length=20, default="0000000000")
-    gender = models.CharField(max_length=10, choices=[('Male','Male'),('Female','Female'),('Other','Other')], blank=True, default="Other")
-    date_of_birth = models.DateField(blank=True, null=True, default=timezone.now)
-    college = models.CharField(max_length=255, default="Your College Name")
-    department = models.CharField(max_length=100, default="Department")
+    username = models.CharField(max_length=150, unique=True)
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=20)
+    gender = models.CharField(max_length=10, choices=[('Male','Male'),('Female','Female'),('Other','Other')])
+    date_of_birth = models.DateField(default=timezone.now)
+    college = models.CharField(max_length=255)
+    department = models.CharField(max_length=100)
     YEAR_SEMESTER_CHOICES = [
         ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'), ('7', '7'), ('8', '8')
     ]
-    year_semester = models.CharField(max_length=17, choices=YEAR_SEMESTER_CHOICES, default='0')
-    courses_registered = models.ManyToManyField(CourseItem, blank=True)
+    year_semester = models.CharField(max_length=17, choices=YEAR_SEMESTER_CHOICES)
+    courses_registered = models.ManyToManyField(CourseItem)
     profile_image = models.ImageField(upload_to='student_profiles/', blank=True, null=True)
     registration_date = models.DateTimeField(default=timezone.now)
-    mentor = models.ForeignKey('Mentor', on_delete=models.SET_NULL, null=True, blank=True, related_name='students')
+    mentor = models.ForeignKey('Mentor', on_delete=models.SET_NULL, null=True, related_name='students')
 
     def __str__(self):
         return f"Student: {self.user.username}"
