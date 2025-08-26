@@ -281,11 +281,13 @@ JAZZMIN_SETTINGS = {
 
 # Email configuration for sending contact form details to admin
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.hostinger.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'rbhargavi846@gmail.com'
-EMAIL_HOST_PASSWORD = 'ajnq uexu jkww tycw' # Removed spaces from app password
+EMAIL_HOST_USER = 'info@donotechsolutions.com'
+EMAIL_HOST_PASSWORD = 'Donotech@659'  # Replace this with the new password
 
 # Add ADMIN_EMAIL for contact form recipient
-ADMIN_EMAIL = 'rbhargavi846@gmail.com'
+ADMIN_EMAIL = 'info@donotechsolutions.com'
+
+
