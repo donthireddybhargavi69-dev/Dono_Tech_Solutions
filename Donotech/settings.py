@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -20,12 +23,13 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nzl92wk@w#8dh*1c1i5sg2xcs555_e@q881gif=#-mf2m$70jg'
+SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['Donotech.com', 'www.Donotech.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['Donotechsolutons.com', 'www.Donotechsolutions.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
