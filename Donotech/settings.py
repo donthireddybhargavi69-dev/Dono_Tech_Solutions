@@ -10,6 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn="https://your_sentry_dsn_here",
+    integrations=[DjangoIntegration()],
+)
+
 from pathlib import Path
 import os
 from dotenv import load_dotenv
