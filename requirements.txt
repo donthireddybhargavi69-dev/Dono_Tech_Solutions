@@ -142,7 +142,7 @@ python-dotenv==1.0.0
 python-jose==3.3.0
 python-pptx==1.0.2
 pytz==2023.3.post1
-pywin32==305
+pywin32==304
 PyYAML==6.0.2
 pyzmq==25.1.2
 referencing==0.36.2
