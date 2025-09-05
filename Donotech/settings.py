@@ -10,19 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-
-sentry_sdk.init(
-    dsn="https://your_sentry_dsn_here",
-    integrations=[DjangoIntegration()],
-)
-
 from pathlib import Path
 import os
-from dotenv import load_dotenv
-# Load environment variables from .env file
-load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -31,14 +20,21 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
-DATABASE_URL = os.getenv('DATABASE_URL')
+SECRET_KEY = 'django-insecure-nzl92wk@w#8dh*1c1i5sg2xcs555_e@q881gif=#-mf2m$70jg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['Donotechsolutons.com', 'www.Donotechsolutions.com', '127.0.0.1', 'localhost']
+# Security settings for production
+DEBUG = False
+ALLOWED_HOSTS = ['donotechsolutions.com', 'www.donotechsolutions.com', 'localhost', '127.0.0.1']
 
+# SSL/HTTPS settings
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # Application definition
 
@@ -303,3 +299,7 @@ EMAIL_HOST_PASSWORD = 'Donotech@659'  # Replace this with the new password
 ADMIN_EMAIL = 'info@donotechsolutions.com'
 
 
+
+# Access environment variables 
+SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key') 
+DATABASE_URL='sqlite:///db.sqlite3'
