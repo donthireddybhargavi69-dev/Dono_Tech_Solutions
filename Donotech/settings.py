@@ -23,7 +23,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-nzl92wk@w#8dh*1c1i5sg2xcs555_e@q881gif=#-mf2m$70jg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['Donotech.com', 'www.Donotech.com', '127.0.0.1', 'localhost']
 
