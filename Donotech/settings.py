@@ -22,12 +22,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-nzl92wk@w#8dh*1c1i5sg2xcs555_e@q881gif=#-mf2m$70jg'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
 # Security settings for production
 DEBUG = False
-ALLOWED_HOSTS = ['donotechsolutions.com', 'www.donotechsolutions.com', '82.25.105.28']
+ALLOWED_HOSTS = ['donotechsolutions.com', 'www.donotechsolutions.com', 'localhost', '127.0.0.1', '82.25.105.28']
 
 # SSL/HTTPS settings
 SECURE_SSL_REDIRECT = True
