@@ -1,0 +1,12 @@
+[0;1;31m×[0m gunicorn.service - gunicorn daemon for Dono Tech Solutions
+     Loaded: loaded (/etc/systemd/system/gunicorn.service; enabled; vendor preset: enabled)
+     Active: [0;1;31mfailed[0m (Result: exit-code) since Sat 2025-09-06 09:42:50 UTC; 18ms ago
+    Process: 25712 ExecStart=/opt/Dono_Tech_Solutions/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/tmp/gunicorn.sock Donotech.wsgi:application [0;1;31m(code=exited, status=203/EXEC)[0m
+   Main PID: 25712 (code=exited, status=203/EXEC)
+        CPU: 1ms
+
+Sep 06 09:42:50 srv994015 systemd[1]: Started gunicorn daemon for Dono Tech Solutions.
+Sep 06 09:42:50 srv994015 systemd[25712]: [0;1;31m[0;1;39m[0;1;31mgunicorn.service: Failed to execute /opt/Dono_Tech_Solutions/env/bin/gunicorn: Permission denied[0m
+Sep 06 09:42:50 srv994015 systemd[25712]: [0;1;31m[0;1;39m[0;1;31mgunicorn.service: Failed at step EXEC spawning /opt/Dono_Tech_Solutions/env/bin/gunicorn: Permission denied[0m
+Sep 06 09:42:50 srv994015 systemd[1]: [0;1;39m[0;1;31m[0;1;39mgunicorn.service: Main process exited, code=exited, status=203/EXEC[0m
+Sep 06 09:42:50 srv994015 systemd[1]: [0;1;38;5;185m[0;1;39m[0;1;38;5;185mgunicorn.service: Failed with result 'exit-code'.[0m

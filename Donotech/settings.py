@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-nzl92wk@w#8dh*1c1i5sg2xcs555_e@q881gif=#-mf2m$70jg
 
 # Security settings for production
 DEBUG = False
+<<<<<<< Updated upstream
 ALLOWED_HOSTS = ['donotechsolutions.com', 'www.donotechsolutions.com', 'localhost', '127.0.0.1', '82.25.105.28']
+=======
+ALLOWED_HOSTS = ['donotechsolutions.com', 'www.donotechsolutions.com','localhost','127.0.0.1','82.25.105.28']
+>>>>>>> Stashed changes
 
 # SSL/HTTPS settings
 SECURE_SSL_REDIRECT = True
@@ -33,7 +37,9 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
-
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -299,5 +305,4 @@ ADMIN_EMAIL = 'info@donotechsolutions.com'
 
 
 # Access environment variables 
-SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key') 
 DATABASE_URL='sqlite:///db.sqlite3'
