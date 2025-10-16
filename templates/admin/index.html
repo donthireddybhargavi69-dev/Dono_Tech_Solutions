@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
-
-{% block title %} index {% endblock %}
+{% block title %}{% trans 'Admin Login' %}{% endblock %}
 
 {% block content %}
-  <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'vendor/adminlte/css/adminlte.min.css' %}" />
   <link rel="stylesheet" href="{% static 'css/main.css' %}" />
 
   <header>
-    <img src="{% static 'images/AdminLTELogo.png' %}" alt="Logo" />
+    <img src="{% static 'jazzmin/vendor/adminlte/img/AdminLTELogo.png' %}" alt="Logo" />
   </header>
 
   <div class="content">
     <!-- your content -->
   </div>
 
-  <script src="{% static 'js/jquery.js' %}"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/adminlte.min.js' %}"></script>
+  <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'vendor/adminlte/js/adminlte.min.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
 {% endblock %}
