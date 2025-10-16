@@ -25,13 +25,13 @@ SECRET_KEY = 'django-insecure-nzl92wk@w#8dh*1c1i5sg2xcs555_e@q881gif=#-mf2m$70jg
 
 
 # Security settings for production
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['donotechsolutions.com', 'www.donotechsolutions.com', 'localhost', '127.0.0.1', '82.25.105.28']
 
 # SSL/HTTPS settings
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
