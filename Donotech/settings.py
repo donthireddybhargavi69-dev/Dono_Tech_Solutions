@@ -154,7 +154,9 @@ ADMIN_EMAIL = 'info@donotechsolutions.com'
 
 
 # Access environment variables 
-SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key') JAZZMIN_SETTINGS = {
+SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+
+JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
    "site_title": "Admin",
 
