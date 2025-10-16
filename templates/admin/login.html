@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% load static i18n %}
-
-{% block title %}{% trans "Admin Login" %}{% endblock %}
+{% load static %}
+{% load i18n %}
+{% block title %} Admin Login {% endblock %}
 
 {% block content %}
 <style>
@@ -17,8 +17,9 @@
         --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
+    /* Login Wrapper */
     .login-wrapper { display: flex; min-height: 100vh; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
-    .login-image { flex: 1; background: linear-gradient(rgba(2,123,193,0.85), rgba(67,97,238,0.85)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80'); background-size: cover; background-position: center; color: white; padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
+    .login-image { flex: 1; background: linear-gradient(rgba(2,123,193,0.85), rgba(67,97,238,0.85)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'); background-size: cover; background-position: center; color: white; padding: 2rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
     .image-overlay { max-width: 500px; margin: 0 auto; position: relative; z-index: 2; }
     .login-image h2 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 700; line-height: 1.2; animation: fadeInUp 0.8s ease; }
     .login-image p { font-size: 1.15rem; margin-bottom: 2rem; line-height: 1.6; animation: fadeInUp 0.8s ease 0.2s forwards; opacity: 0; }
@@ -40,20 +41,23 @@
     .password-toggle { position: absolute; right: 15px; top: 48px; cursor: pointer; color: #6c757d; font-size: 0.9rem; font-weight: 500; }
 
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 992px) { .login-wrapper { flex-direction: column; } .login-image { padding: 3rem 2rem; text-align: center; } .login-container { max-width: 100%; padding: 3rem 2rem; } }
+    @media (max-width: 576px) { .login-container { padding: 2rem 1.5rem; } .login-header h2 { font-size: 1.6rem; } .login-image h2 { font-size: 2rem; } .login-image p { font-size: 1rem; } }
 </style>
 
 <div class="login-wrapper">
     <div class="login-image">
         <div class="image-overlay">
-            <h2>{% trans "Welcome to Admin Portal" %}</h2>
-            <p>{% trans "Streamline your workflow with our powerful administration tools and management dashboard." %}</p>
+            <h2>Welcome to Admin Portal</h2>
+            <p>Streamline your workflow with our powerful administration tools and management dashboard.</p>
         </div>
     </div>
 
     <div class="login-container">
         <div class="login-header">
-            <h2>{% trans "Sign In" %}</h2>
-            <p>{% trans "Access your admin dashboard" %}</p>
+            <h2>{% trans 'Sign In' %}</h2>
+            <p>{% trans 'Access your admin dashboard' %}</p>
         </div>
 
         {% if form.errors %}
@@ -65,14 +69,14 @@
         <form method="post" class="login-form" action="{% url 'admin:login' %}">
             {% csrf_token %}
             <div class="form-group">
-                <label for="id_username">{% trans "Username:" %}</label>
+                <label for="id_username">{% trans 'Username:' %}</label>
                 <input type="text" name="username" autofocus autocomplete="username" maxlength="150"
                        class="form-control" required id="id_username"
                        placeholder="{% trans 'Enter your username' %}" />
             </div>
 
             <div class="form-group">
-                <label for="id_password">{% trans "Password:" %}</label>
+                <label for="id_password">{% trans 'Password:' %}</label>
                 <input type="password" name="password" autocomplete="current-password"
                        class="form-control" required id="id_password"
                        placeholder="{% trans 'Enter your password' %}" />
@@ -83,7 +87,7 @@
                 <input type="hidden" name="next" value="{{ next }}" />
             {% endif %}
 
-            <button type="submit" class="login-btn">{% trans "Login" %}</button>
+            <button type="submit" class="login-btn">{% trans 'Login' %}</button>
         </form>
     </div>
 </div>
