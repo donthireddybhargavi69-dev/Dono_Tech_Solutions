@@ -1,24 +1,143 @@
-{% extends "base.html" %}
-{% load static %}
-{% load i18n %}
-
-{% block title %}{% trans 'Admin Login' %}{% endblock %}
+{% extends "admin/login.html" %}
+{% load static i18n %}
 
 {% block content %}
-  <link rel="stylesheet" href="{% static 'css/all.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+    :root {
+        --primary-color:  #4361ee;
+        --primary-hover: #3a56d4;
+        --error-color: #ef233c;
+        --text-color: #2b2d42;
+        --light-gray: #edf2f4;
+        --border-radius: 12px;
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
 
-  <header>
-    <img src="{% static 'images/AdminLTELogo.png' %}" alt="Logo" />
-  </header>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background: #f4f7fe;
+    }
 
-  <div class="content">
-    <!-- your content -->
-  </div>
+    .login-wrapper {
+        display: flex;
+        min-height: 100vh;
+    }
 
-  <script src="{% static 'js/jquery.js' %}"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/adminlte.min.js' %}"></script>
-  <script src="{% static 'js/main.js' %}"></script>
+    .login-image {
+        flex: 1;
+        background: linear-gradient(rgba(2, 123, 193, 0.85), rgba(67, 97, 238, 0.85)), 
+        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1470&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+
+    .image-overlay {
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 420px;
+        padding: 3rem 2.5rem;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+
+    .login-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .login-header h2 {
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .login-form .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .login-form label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.4rem;
+    }
+
+    .login-form input {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    .login-btn {
+        width: 100%;
+        padding: 1rem;
+        background: var(--primary-color);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+    .login-btn:hover {
+        background: var(--primary-hover);
+    }
+</style>
+
+<div class="login-wrapper">
+    <div class="login-image">
+        <div class="image-overlay">
+            <h2>Welcome to Admin Portal</h2>
+            <p>Streamline your workflow with our powerful administration tools.</p>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h2>{% trans 'Sign In' %}</h2>
+            <p>{% trans 'Access your admin dashboard' %}</p>
+        </div>
+
+        {% if form.errors %}
+            <div class="alert alert-danger">{% trans "Please correct the errors below." %}</div>
+        {% endif %}
+
+        <form method="post" action="{% url 'admin:login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">{% trans 'Username' %}</label>
+                <input type="text" name="username" id="id_username" autofocus required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_password">{% trans 'Password' %}</label>
+                <input type="password" name="password" id="id_password" required>
+            </div>
+
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}">
+            {% endif %}
+
+            <button type="submit" class="login-btn">{% trans 'Login' %}</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
