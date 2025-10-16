@@ -169,10 +169,13 @@ form .aligned select + div.help {
     padding-left: 10px;
 }
 
+<<<<<<< HEAD
 form .aligned select option:checked {
     background-color: var(--selected-row);
 }
 
+=======
+>>>>>>> c4b91c71838ddf795a27b0a664db174292421dcf
 form .aligned ul li {
     list-style: none;
 }
@@ -449,6 +452,20 @@ body.popup .submit-row {
     _width: 700px;
 }
 
+<<<<<<< HEAD
+=======
+.inline-group ul.tools {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.inline-group ul.tools li {
+    display: inline;
+    padding: 0 5px;
+}
+
+>>>>>>> c4b91c71838ddf795a27b0a664db174292421dcf
 .inline-group div.add-row,
 .inline-group .tabular tr.add-row td {
     color: var(--body-quiet-color);
@@ -462,8 +479,16 @@ body.popup .submit-row {
     border-bottom: 1px solid var(--hairline-color);
 }
 
+<<<<<<< HEAD
 .inline-group div.add-row a,
 .inline-group .tabular tr.add-row td a {
+=======
+.inline-group ul.tools a.add,
+.inline-group div.add-row a,
+.inline-group .tabular tr.add-row td a {
+    background: url(../img/icon-addlink.svg) 0 1px no-repeat;
+    padding-left: 16px;
+>>>>>>> c4b91c71838ddf795a27b0a664db174292421dcf
     font-size: 0.75rem;
 }
 

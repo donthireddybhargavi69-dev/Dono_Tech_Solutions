@@ -140,10 +140,32 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'
 
 
+<<<<<<< HEAD
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "Admin",
+=======
+# Email configuration for sending contact form details to admin
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.hostinger.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'info@donotechsolutions.com'
+EMAIL_HOST_PASSWORD = 'Donotech@659'  # Replace this with the new password
+
+# Add ADMIN_EMAIL for contact form recipient
+ADMIN_EMAIL = 'info@donotechsolutions.com'
+
+
+
+# Access environment variables 
+SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+   "site_title": "Admin",
+>>>>>>> c4b91c71838ddf795a27b0a664db174292421dcf
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_header": "DonoTech Admin",
@@ -151,7 +173,11 @@ JAZZMIN_SETTINGS = {
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_brand": "Donotech",
 
+<<<<<<< HEAD
     # Logo to use for your site, must be present in static files, used for brand on top left
+=======
+   # Logo to use for your site, must be present in static files, used for brand on top left
+>>>>>>> c4b91c71838ddf795a27b0a664db174292421dcf
     
 
     # Logo to use for login form logo (defaults to site_logo)
@@ -191,16 +217,24 @@ JAZZMIN_SETTINGS = {
 
         # external url that opens in a new window (Permissions can be added)
         {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+<<<<<<< HEAD
 
         # model admin to link to (Permissions checked against model)
         {"model": "auth.User"},
+=======
+        # model admin to link to (Permissions checked against model)
+       {"model": "auth.User"},
+>>>>>>> c4b91c71838ddf795a27b0a664db174292421dcf
 
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "books"},
 
         {"name": "STU_info", "url": "student_details"},
     ],
+<<<<<<< HEAD
 
+=======
+>>>>>>> c4b91c71838ddf795a27b0a664db174292421dcf
     #############
     # User Menu #
     #############
@@ -209,7 +243,11 @@ JAZZMIN_SETTINGS = {
     "usermenu_links": [
         {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
         {"model": "auth.user"}
+<<<<<<< HEAD
     ],
+=======
+   ],
+>>>>>>> c4b91c71838ddf795a27b0a664db174292421dcf
 
     #############
     # Side Menu #
@@ -283,6 +321,7 @@ JAZZMIN_SETTINGS = {
     # Add a language dropdown into the admin
     "language_chooser": True,
 }
+<<<<<<< HEAD
 
 
 # Email configuration for sending contact form details to admin
@@ -301,3 +340,5 @@ ADMIN_EMAIL = 'info@donotechsolutions.com'
 # Access environment variables 
 SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key') 
 DATABASE_URL='sqlite:///db.sqlite3'
+=======
+>>>>>>> c4b91c71838ddf795a27b0a664db174292421dcf

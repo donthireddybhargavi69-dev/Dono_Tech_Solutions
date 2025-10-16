@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Responsive Design Implementation Plan
 
 ## Tasks to Complete:
@@ -29,3 +30,15 @@
 - Consider adding more interactive elements for mobile users
 - Optimize images for faster mobile loading
 - Test touch interactions on mobile devices
+=======
+# TODO: Fix Jazzmin Stylings in Django Admin
+
+## Tasks
+- [x] Removed 'jazzmin' from INSTALLED_APPS
+- [x] Removed JAZZMIN_SETTINGS from settings.py
+- [x] Ran collectstatic (0 static files copied, 128 unmodified)
+
+## Notes
+- User preferred to keep the default Django admin interface.
+- Jazzmin has been completely removed from the project.
+>>>>>>> c4b91c71838ddf795a27b0a664db174292421dcf
