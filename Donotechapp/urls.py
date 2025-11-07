@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from . import views_mentor
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -30,6 +32,13 @@ urlpatterns = [
     path('projects/', views.projects, name='projects'),
     path('strategy/', views.strategy, name='strategy'),
     path('my_courses/',views.mycourses, name='my_courses'),
+    path(
+        "robots.txt",
+        TemplateView.as_view(
+            template_name="robots.txt",
+            content_type="text/plain"
+        ),
+    ),
 
 
 ]  
