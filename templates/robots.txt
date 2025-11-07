@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://donotechsolutions.com/sitemap.xml
