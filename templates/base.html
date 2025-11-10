@@ -5,14 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}DONOTECH SOLUTIONS{% endblock %}</title>
-    <!-- ✅ SEO Meta Description -->
-    <meta name="description" content="DonoTech Solutions provides real-world IT training, internships, and mentorship programs bridging academia and industry.">
-    
-    <!-- ✅ Optional Keywords (can help for context, though not critical for SEO) -->
-    <meta name="keywords" content="IT training, internships, software development, Python, Full Stack, QA Testing, DonoTech Solutions, academia and industry bridge">
-    
-    <!-- ✅ Optional Author Tag -->
-    <meta name="author" content="DonoTech Solutions">
+   <title>{% block title %}DONOTECH SOLUTIONS{% endblock %}</title>
+<!-- 👇 Comprehensive SEO + Open Graph + Twitter Meta Tags -->
+<meta name="description" content="DonoTech Solutions provides real-world IT training, internships, and mentorship programs bridging academia and industry.">
+<meta name="keywords" content="DonoTech Solutions, IT training, internships, Full Stack Development, QA Testing, Python courses, placement programs, industry projects">
+<meta name="author" content="DonoTech Solutions">
+<meta name="robots" content="index, follow">
+
+<!-- ✅ Open Graph (for Facebook, LinkedIn, WhatsApp previews) -->
+<meta property="og:title" content="DonoTech Solutions | Bridging Academia and Industry">
+<meta property="og:description" content="Join DonoTech Solutions to gain real-world IT training, internships, and mentorship that prepare you for industry success.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://donotechsolutions.com/">
+<meta property="og:image" content="https://donotechsolutions.com/static/images/og-image.jpg">
+<meta property="og:site_name" content="DonoTech Solutions">
+
+<!-- ✅ Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DonoTech Solutions | Real-World IT Training & Mentorship">
+<meta name="twitter:description" content="DonoTech Solutions bridges the gap between academia and industry with real-world projects and expert mentorship.">
+<meta name="twitter:image" content="https://donotechsolutions.com/static/images/og-image.jpg">
+
+<!-- ✅ Canonical URL -->
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+
 
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
