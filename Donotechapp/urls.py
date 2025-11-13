@@ -5,6 +5,11 @@ from django.views.generic import TemplateView
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import StaticViewSitemap, CourseSitemap
 
+sitemaps = {
+    'static': StaticViewSitemap,
+    'courses': CourseSitemap,
+}
+
 
 urlpatterns = [
     path('', views.home, name='home'),
