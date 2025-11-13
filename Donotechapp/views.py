@@ -123,7 +123,7 @@ def contact(request):
                     messages.error(request, f"An error occurred while sending your message: {e}")
                     return render(request, 'contact.html')
             messages.success(request, 'Thank you for your message. We will get back to you soon.')
-            return redirect('contact')
+            return redirect('contact_success')
     return render(request, 'contact.html')
 
 def home(request):
