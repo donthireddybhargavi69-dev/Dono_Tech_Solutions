@@ -25,6 +25,7 @@ urlpatterns = [
     path('courses/<int:pk>/update/', views.course_update, name='course_update'),
     path('courses/<int:pk>/delete/', views.course_delete, name='course_delete'),
     path('contact/', views.contact, name='contact'),
+    path('contact-success/', views.contact_success, name='contact_success'),
     path('about/', views.about, name='about'),
     path('programs/', views.programs, name='programs'),
     path('internship/',views.internship,name='internship'),
