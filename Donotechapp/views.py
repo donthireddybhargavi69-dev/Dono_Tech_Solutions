@@ -345,3 +345,8 @@ def student_delete(request, pk):
         return redirect('student_details')
     return render(request, 'student_confirm_delete.html', {'student': student})
 
+
+def contact_success(request):
+    return render(request, 'contact-success.html')
+
+
