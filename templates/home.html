@@ -840,23 +840,80 @@
         .hero-section {
             padding: 6rem 0;
         }
-        
+
         .hero-section h1 {
             font-size: 2.2rem;
         }
-        
+
         .section {
             padding: 4rem 0;
         }
-        
-        .partner-logo {
-            height: 80px;
-            padding: 1.5rem;
+
+        .partner-logo-container {
+            height: 200px;
         }
-        
+
+        .partner-logo {
+            width: 150px;
+            height: 150px;
+            padding: 1rem;
+        }
+
         .btn-cta {
             padding: 1rem 2.5rem;
             font-size: 1.1rem;
+        }
+    }
+
+    /* Extra small devices (phones, 576px and up) */
+    @media (min-width: 576px) and (max-width: 767px) {
+        .partner-logo-container {
+            height: 180px;
+        }
+
+        .partner-logo {
+            width: 130px;
+            height: 130px;
+            padding: 1rem;
+        }
+    }
+
+    /* Small devices (tablets, 768px and up) */
+    @media (min-width: 768px) and (max-width: 991px) {
+        .partner-logo-container {
+            height: 160px;
+        }
+
+        .partner-logo {
+            width: 120px;
+            height: 120px;
+            padding: 1rem;
+        }
+    }
+
+    /* Medium devices (desktops, 992px and up) */
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .partner-logo-container {
+            height: 150px;
+        }
+
+        .partner-logo {
+            width: 120px;
+            height: 120px;
+            padding: 1rem;
+        }
+    }
+
+    /* Large devices (large desktops, 1200px and up) */
+    @media (min-width: 1200px) {
+        .partner-logo-container {
+            height: 150px;
+        }
+
+        .partner-logo {
+            width: 120px;
+            height: 120px;
+            padding: 1rem;
         }
     }
 
@@ -949,7 +1006,7 @@
         
         <div class="row justify-content-center g-4 py-3" data-aos="fade-up" data-aos-delay="100">
             {% for tieup in tieups %}
-            <div class="col-6 col-md-4 col-lg-3">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="partner-card">
                     <div class="partner-logo-container">
                         <img src="{{ tieup.logo.url }}" class="partner-logo" alt="{{ tieup.name|default:'Partner' }}" loading="lazy">
