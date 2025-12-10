@@ -3,74 +3,79 @@
 
   <url>
     <loc>https://donotechsolutions.com/</loc>
+    <lastmod>2025-12-10T09:25:18+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <priority>1.00</priority>
   </url>
 
   <url>
-    <loc>https://donotechsolutions.com/internships/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://donotechsolutions.com/career-guidance/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://donotechsolutions.com/testimonials/</loc>
+    <loc>https://donotechsolutions.com/about/</loc>
+    <lastmod>2025-12-10T09:25:18+00:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://donotechsolutions.com/blog/</loc>
+    <loc>https://donotechsolutions.com/login/</loc>
+    <lastmod>2025-12-10T09:25:18+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://donotechsolutions.com/register/</loc>
+    <lastmod>2025-12-10T09:25:18+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://donotechsolutions.com/programs/</loc>
+    <lastmod>2025-12-10T09:25:18+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://donotechsolutions.com/blog/post-1/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://donotechsolutions.com/blog/post-2/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://donotechsolutions.com/faq/</loc>
+    <loc>https://donotechsolutions.com/contact/</loc>
+    <lastmod>2025-12-10T09:25:18+00:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://donotechsolutions.com/privacy-policy/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://donotechsolutions.com/courses/</loc>
+    <lastmod>2025-12-10T09:25:18+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.64</priority>
   </url>
 
   <url>
-    <loc>https://donotechsolutions.com/terms/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://donotechsolutions.com/internship/</loc>
+    <lastmod>2025-12-10T09:25:18+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.64</priority>
   </url>
 
   <url>
-    <loc>https://donotechsolutions.com/refund-policy/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://donotechsolutions.com/jobs/</loc>
+    <lastmod>2025-12-10T09:25:18+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.64</priority>
   </url>
 
   <url>
-    <loc>https://donotechsolutions.com/contact-success/</loc>
+    <loc>https://donotechsolutions.com/projects/</loc>
+    <lastmod>2025-12-10T09:25:18+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.64</priority>
+  </url>
+
+  <url>
+    <loc>https://donotechsolutions.com/strategy/</loc>
+    <lastmod>2025-12-10T09:25:18+00:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.1</priority>
+    <priority>0.64</priority>
   </url>
 
 </urlset>
