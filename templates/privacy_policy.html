@@ -4,202 +4,793 @@
 {% block title %}Privacy Policy | DonoTech Solutions{% endblock %}
 {% block content %}
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #4361ee;
+            --primary-purple: #9d50bb;
+            --secondary-teal: #2ec4b6;
+            --dark-navy: #1a1a2e;
+            --dark-gray: #2c3e50;
+            --medium-gray: #6c757d;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --accent-orange: #ff9e00;
+            --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.12);
+            --gradient-primary: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            --gradient-secondary: linear-gradient(to right, var(--primary-blue), var(--secondary-teal));
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-:root {
-    --primary: #4361ee;
-    --primary-light: #9d50bb;
-    --dark: #2c3e50;
-    --gray: #6c757d;
-    --light: #f8f9fa;
-    --white: #ffffff;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    background: var(--light);
-    color: var(--dark);
-    line-height: 1.7;
-}
+        /* Header & Navigation */
+        .header {
+            background: var(--white);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.hero {
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    color: var(--white);
-    padding: 70px 20px;
-    text-align: center;
-}
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
 
-.hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 10px;
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
 
-.hero p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
 
-.container {
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 40px;
-    background: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-h2 {
-    color: var(--primary);
-    margin-top: 40px;
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-}
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
 
-p {
-    margin-bottom: 15px;
-    color: var(--gray);
-}
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
 
-ul {
-    padding-left: 20px;
-    margin-bottom: 20px;
-}
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
 
-li {
-    margin-bottom: 10px;
-}
+        .nav-links a:hover:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-secondary);
+            border-radius: 2px;
+        }
 
-.highlight-box {
-    background: #eef2ff;
-    padding: 20px;
-    border-radius: 12px;
-    margin-top: 30px;
-}
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-footer {
-    text-align: center;
-    padding: 30px;
-    font-size: 0.9rem;
-    color: var(--gray);
-}
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTI4MCAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iIzAwMDAwMCIgZmlsbC1vcGFjaXR5PSIwLjA1IiBkPSJNMTI4MCAxMzkuMkwwIDEzOS4ydi0xMzkuMmwxMjgwIDEzOS4yeiIvPjwvc3ZnPg==');
+            background-size: cover;
+            opacity: 0.1;
+        }
 
-@media(max-width:768px){
-    .container{
-        padding:25px;
-        margin:30px 15px;
-    }
-    .hero h1{
-        font-size:2rem;
-    }
-}
-</style>
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .hero-date {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow-light);
+            margin-bottom: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: var(--medium-gray);
+            line-height: 1.8;
+        }
+
+        .intro-text strong {
+            color: var(--primary-blue);
+        }
+
+        /* Policy Sections */
+        .policy-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .policy-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border-radius: 50%;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        h2 {
+            color: var(--dark-navy);
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin: 15px 0 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .policy-content p {
+            margin-bottom: 15px;
+            color: var(--medium-gray);
+        }
+
+        .policy-list {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .policy-list li {
+            margin-bottom: 10px;
+            color: var(--medium-gray);
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .policy-list li:before {
+            content: '•';
+            color: var(--primary-blue);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f4ff 0%, #f9f0ff 100%);
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 40px;
+            border-left: 5px solid var(--primary-blue);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.08);
+        }
+
+        .highlight-box h2 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .highlight-box p {
+            margin-bottom: 8px;
+            color: var(--dark-gray);
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-navy);
+            color: var(--white);
+            padding: 60px 20px 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-teal);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .content-card {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 20px;
+            }
+
+            .logo {
+                margin-bottom: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 70px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .content-card {
+                padding: 30px 20px;
+                margin-bottom: 30px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section-number {
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="https://donotechsolutions.com" class="logo">
+                <div class="logo-icon">DT</div>
+                <div class="logo-text">DonoTech</div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="https://donotechsolutions.com">Home</a></li>
+                <li><a href="https://donotechsolutions.com/about">About</a></li>
+                <li><a href="https://donotechsolutions.com/courses">Courses</a></li>
+                <li><a href="https://donotechsolutions.com/internships">Internships</a></li>
+                <li><a href="https://donotechsolutions.com/contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
 
-<section class="hero">
-    <h1>Privacy Policy</h1>
-    <p>DonoTech Solutions | Effective Date: February 2026</p>
-</section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Privacy Policy</h1>
+            <p class="hero-subtitle">Your trust and privacy are our top priority at DonoTech Solutions</p>
+            <div class="hero-date">Effective Date: February 2026</div>
+        </div>
+    </section>
 
-<div class="container">
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="content-card">
+            <p class="intro-text">
+                At <strong>DonoTech Solutions</strong>, we value your trust. This Privacy Policy explains how we collect, use, protect, and manage your personal information when you interact with our website, enroll in training programs, apply for internships, or seek placement assistance.
+            </p>
 
-<p>
-At <strong>DonoTech Solutions</strong>, we value your trust. This Privacy Policy explains how we collect, use, protect, and manage your personal information when you interact with our website, enroll in training programs, apply for internships, or seek placement assistance.
-</p>
+            <div class="policy-section">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <h2>About DonoTech Solutions</h2>
+                </div>
+                <div class="policy-content">
+                    <p>DonoTech Solutions provides industry-focused IT training, real-time project experience, internships, mentorship programs, and placement support to help students and professionals build practical career skills.</p>
+                </div>
+            </div>
 
-<h2>1. About DonoTech Solutions</h2>
-<p>
-DonoTech Solutions provides industry-focused IT training, real-time project experience, internships, mentorship programs, and placement support to help students and professionals build practical career skills.
-</p>
+            <div class="policy-section">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <h2>Information We Collect</h2>
+                </div>
+                <div class="policy-content">
+                    <p class="section-subtitle">Information You Provide:</p>
+                    <ul class="policy-list">
+                        <li>Name, email address, and phone number</li>
+                        <li>Educational qualifications and career interests</li>
+                        <li>Resume or project details (if shared)</li>
+                        <li>Messages submitted via contact forms</li>
+                    </ul>
+                    
+                    <p class="section-subtitle">Automatically Collected Information:</p>
+                    <ul class="policy-list">
+                        <li>IP address and browser type</li>
+                        <li>Device information</li>
+                        <li>Pages visited and interaction data</li>
+                        <li>Cookies and analytics data</li>
+                    </ul>
+                </div>
+            </div>
 
-<h2>2. Information We Collect</h2>
+            <div class="policy-section">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <h2>How We Use Your Information</h2>
+                </div>
+                <div class="policy-content">
+                    <ul class="policy-list">
+                        <li>Responding to enquiries and scheduling consultations</li>
+                        <li>Processing course registrations and internship applications</li>
+                        <li>Providing placement assistance and mentorship</li>
+                        <li>Sending relevant program updates</li>
+                        <li>Improving website performance and user experience</li>
+                        <li>Ensuring website security and preventing misuse</li>
+                    </ul>
+                    <p>We do not sell or trade your personal information.</p>
+                </div>
+            </div>
 
-<p><strong>Information You Provide:</strong></p>
-<ul>
-<li>Name, email address, and phone number</li>
-<li>Educational qualifications and career interests</li>
-<li>Resume or project details (if shared)</li>
-<li>Messages submitted via contact forms</li>
-</ul>
+            <div class="policy-section">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <h2>Communication Policy</h2>
+                </div>
+                <div class="policy-content">
+                    <p>By submitting your contact details, you agree that DonoTech Solutions may contact you via phone, SMS, WhatsApp, or email regarding educational programs, internships, or placement opportunities. You may opt out of non-essential communications at any time.</p>
+                </div>
+            </div>
 
-<p><strong>Automatically Collected Information:</strong></p>
-<ul>
-<li>IP address and browser type</li>
-<li>Device information</li>
-<li>Pages visited and interaction data</li>
-<li>Cookies and analytics data</li>
-</ul>
+            <div class="policy-section">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <h2>Data Sharing</h2>
+                </div>
+                <div class="policy-content">
+                    <p>We may share limited information only when necessary:</p>
+                    <ul class="policy-list">
+                        <li>With hiring or internship partners (only relevant data)</li>
+                        <li>With secure service providers (hosting, analytics, email services)</li>
+                        <li>If required by law or regulatory authorities</li>
+                    </ul>
+                </div>
+            </div>
 
-<h2>3. How We Use Your Information</h2>
-<ul>
-<li>Responding to enquiries and scheduling consultations</li>
-<li>Processing course registrations and internship applications</li>
-<li>Providing placement assistance and mentorship</li>
-<li>Sending relevant program updates</li>
-<li>Improving website performance and user experience</li>
-<li>Ensuring website security and preventing misuse</li>
-</ul>
+            <div class="policy-section">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <h2>Data Security</h2>
+                </div>
+                <div class="policy-content">
+                    <p>We implement appropriate technical and administrative safeguards to protect your data. However, no online system can guarantee complete security.</p>
+                </div>
+            </div>
 
-<p>We do not sell or trade your personal information.</p>
+            <div class="policy-section">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <h2>Data Retention</h2>
+                </div>
+                <div class="policy-content">
+                    <p>We retain personal information only as long as necessary to provide services and comply with legal requirements. You may request deletion of your data, subject to operational obligations.</p>
+                </div>
+            </div>
 
-<h2>4. Communication Policy</h2>
-<p>
-By submitting your contact details, you agree that DonoTech Solutions may contact you via phone, SMS, WhatsApp, or email regarding educational programs, internships, or placement opportunities. You may opt out of non-essential communications at any time.
-</p>
+            <div class="policy-section">
+                <div class="section-header">
+                    <div class="section-number">8</div>
+                    <h2>Cookies</h2>
+                </div>
+                <div class="policy-content">
+                    <p>Our website may use cookies to enhance functionality and analyze usage. You can disable cookies in your browser settings, though some features may not function properly.</p>
+                </div>
+            </div>
 
-<h2>5. Data Sharing</h2>
-<p>
-We may share limited information only when necessary:
-</p>
-<ul>
-<li>With hiring or internship partners (only relevant data)</li>
-<li>With secure service providers (hosting, analytics, email services)</li>
-<li>If required by law or regulatory authorities</li>
-</ul>
+            <div class="policy-section">
+                <div class="section-header">
+                    <div class="section-number">9</div>
+                    <h2>Your Rights</h2>
+                </div>
+                <div class="policy-content">
+                    <ul class="policy-list">
+                        <li>Request access to your personal information</li>
+                        <li>Correct inaccurate data</li>
+                        <li>Request deletion (where applicable)</li>
+                        <li>Opt-out from marketing communication</li>
+                    </ul>
+                </div>
+            </div>
 
-<h2>6. Data Security</h2>
-<p>
-We implement appropriate technical and administrative safeguards to protect your data. However, no online system can guarantee complete security.
-</p>
+            <div class="policy-section">
+                <div class="section-header">
+                    <div class="section-number">10</div>
+                    <h2>Third-Party Links</h2>
+                </div>
+                <div class="policy-content">
+                    <p>Our website may contain links to external websites. DonoTech Solutions is not responsible for the privacy practices of those sites.</p>
+                </div>
+            </div>
 
-<h2>7. Data Retention</h2>
-<p>
-We retain personal information only as long as necessary to provide services and comply with legal requirements. You may request deletion of your data, subject to operational obligations.
-</p>
+            <div class="policy-section">
+                <div class="section-header">
+                    <div class="section-number">11</div>
+                    <h2>Policy Updates</h2>
+                </div>
+                <div class="policy-content">
+                    <p>We may update this Privacy Policy periodically. Changes will be posted on this page with the revised effective date.</p>
+                </div>
+            </div>
 
-<h2>8. Cookies</h2>
-<p>
-Our website may use cookies to enhance functionality and analyze usage. You can disable cookies in your browser settings, though some features may not function properly.
-</p>
+            <div class="highlight-box">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <div class="contact-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <p><strong>DonoTech Solutions</strong></p>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <p>Email: info@donotechsolutions.com</p>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <p>Website: <a href="https://donotechsolutions.com">https://donotechsolutions.com</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-<h2>9. Your Rights</h2>
-<ul>
-<li>Request access to your personal information</li>
-<li>Correct inaccurate data</li>
-<li>Request deletion (where applicable)</li>
-<li>Opt-out from marketing communication</li>
-</ul>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">DonoTech Solutions</div>
+                <p class="footer-description">Providing industry-focused IT training, real-time project experience, internships, and placement support to help build practical career skills.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://donotechsolutions.com">Home</a></li>
+                    <li><a href="https://donotechsolutions.com/about">About Us</a></li>
+                    <li><a href="https://donotechsolutions.com/courses">Courses</a></li>
+                    <li><a href="https://donotechsolutions.com/internships">Internships</a></li>
+                    <li><a href="https://donotechsolutions.com/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="https://donotechsolutions.com/privacy">Privacy Policy</a></li>
+                    <li><a href="https://donotechsolutions.com/terms">Terms of Service</a></li>
+                    <li><a href="https://donotechsolutions.com/cookies">Cookie Policy</a></li>
+                    <li><a href="https://donotechsolutions.com/refund">Refund Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 DonoTech Solutions. All rights reserved.
+        </div>
+    </footer>
 
-<h2>10. Third-Party Links</h2>
-<p>
-Our website may contain links to external websites. DonoTech Solutions is not responsible for the privacy practices of those sites.
-</p>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
 
-<h2>11. Policy Updates</h2>
-<p>
-We may update this Privacy Policy periodically. Changes will be posted on this page with the revised effective date.
-</p>
+    <script>
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
-<div class="highlight-box">
-<h2>Contact Us</h2>
-<p><strong>Dono Tech Solutions</strong></p>
-<p>Email: info@donotechsolutions.com</p>
-<p>Website: https://donotechsolutions.com</p>
-</div>
-
-</div>
+        // Add smooth scrolling to all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId) {
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
 
 {% endblock %}
