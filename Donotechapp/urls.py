@@ -40,6 +40,7 @@ urlpatterns = [
     path('projects/', views.projects, name='projects'),
     path('strategy/', views.strategy, name='strategy'),
     path('my_courses/',views.mycourses, name='my_courses'),
+    path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
     path(
         'sitemap.xml',
         sitemap,
