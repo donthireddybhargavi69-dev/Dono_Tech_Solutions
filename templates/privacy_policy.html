@@ -1,0 +1,207 @@
+<!-- filepath: d:\Downloads\RR Careers\study_abroad\templates\core\login.html -->
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Login - RR Careers{% endblock %}
+{% block content %}
+<title>Privacy Policy | DonoTech Solutions</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #4361ee;
+    --primary-light: #9d50bb;
+    --dark: #2c3e50;
+    --gray: #6c757d;
+    --light: #f8f9fa;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.7;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: var(--white);
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+h2 {
+    color: var(--primary);
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 15px;
+    color: var(--gray);
+}
+
+ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.highlight-box {
+    background: #eef2ff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 30px;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+@media(max-width:768px){
+    .container{
+        padding:25px;
+        margin:30px 15px;
+    }
+    .hero h1{
+        font-size:2rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>Privacy Policy</h1>
+    <p>DonoTech Solutions | Effective Date: February 2026</p>
+</section>
+
+<div class="container">
+
+<p>
+At <strong>DonoTech Solutions</strong>, we value your trust. This Privacy Policy explains how we collect, use, protect, and manage your personal information when you interact with our website, enroll in training programs, apply for internships, or seek placement assistance.
+</p>
+
+<h2>1. About DonoTech Solutions</h2>
+<p>
+DonoTech Solutions provides industry-focused IT training, real-time project experience, internships, mentorship programs, and placement support to help students and professionals build practical career skills.
+</p>
+
+<h2>2. Information We Collect</h2>
+
+<p><strong>Information You Provide:</strong></p>
+<ul>
+<li>Name, email address, and phone number</li>
+<li>Educational qualifications and career interests</li>
+<li>Resume or project details (if shared)</li>
+<li>Messages submitted via contact forms</li>
+</ul>
+
+<p><strong>Automatically Collected Information:</strong></p>
+<ul>
+<li>IP address and browser type</li>
+<li>Device information</li>
+<li>Pages visited and interaction data</li>
+<li>Cookies and analytics data</li>
+</ul>
+
+<h2>3. How We Use Your Information</h2>
+<ul>
+<li>Responding to enquiries and scheduling consultations</li>
+<li>Processing course registrations and internship applications</li>
+<li>Providing placement assistance and mentorship</li>
+<li>Sending relevant program updates</li>
+<li>Improving website performance and user experience</li>
+<li>Ensuring website security and preventing misuse</li>
+</ul>
+
+<p>We do not sell or trade your personal information.</p>
+
+<h2>4. Communication Policy</h2>
+<p>
+By submitting your contact details, you agree that DonoTech Solutions may contact you via phone, SMS, WhatsApp, or email regarding educational programs, internships, or placement opportunities. You may opt out of non-essential communications at any time.
+</p>
+
+<h2>5. Data Sharing</h2>
+<p>
+We may share limited information only when necessary:
+</p>
+<ul>
+<li>With hiring or internship partners (only relevant data)</li>
+<li>With secure service providers (hosting, analytics, email services)</li>
+<li>If required by law or regulatory authorities</li>
+</ul>
+
+<h2>6. Data Security</h2>
+<p>
+We implement appropriate technical and administrative safeguards to protect your data. However, no online system can guarantee complete security.
+</p>
+
+<h2>7. Data Retention</h2>
+<p>
+We retain personal information only as long as necessary to provide services and comply with legal requirements. You may request deletion of your data, subject to operational obligations.
+</p>
+
+<h2>8. Cookies</h2>
+<p>
+Our website may use cookies to enhance functionality and analyze usage. You can disable cookies in your browser settings, though some features may not function properly.
+</p>
+
+<h2>9. Your Rights</h2>
+<ul>
+<li>Request access to your personal information</li>
+<li>Correct inaccurate data</li>
+<li>Request deletion (where applicable)</li>
+<li>Opt-out from marketing communication</li>
+</ul>
+
+<h2>10. Third-Party Links</h2>
+<p>
+Our website may contain links to external websites. DonoTech Solutions is not responsible for the privacy practices of those sites.
+</p>
+
+<h2>11. Policy Updates</h2>
+<p>
+We may update this Privacy Policy periodically. Changes will be posted on this page with the revised effective date.
+</p>
+
+<div class="highlight-box">
+<h2>Contact Us</h2>
+<p><strong>DonoTech Solutions</strong></p>
+<p>Email: support@donotechsolutions.com</p>
+<p>Phone: +91 7981580921</p>
+<p>Website: https://donotechsolutions.com</p>
+</div>
+
+</div>
+
+{% endblock %}
