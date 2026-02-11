@@ -718,7 +718,349 @@
         margin-top: 1.5rem;
         flex-wrap: wrap;
     }
-    
+        /* Base Styles */
+    .features-section {
+        position: relative;
+        padding: 100px 0;
+        background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+        overflow-x: hidden;
+    }
+
+    .features-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 30px;
+    }
+
+    /* Section Header Left-to-Right Animation */
+    .section-header {
+        position: relative;
+        margin-bottom: 70px;
+        opacity: 0;
+        transform: translateX(-50px);
+        animation: slideFromLeft 0.8s ease-out forwards;
+    }
+
+    .section-badge {
+        display: inline-block;
+        padding: 8px 20px;
+        background: linear-gradient(135deg, #4361ee 0%, #9d50bb 100%);
+        color: white;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: slideFromLeft 0.6s ease-out 0.1s forwards;
+    }
+
+    .section-title {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: #1a1a2e;
+        line-height: 1.2;
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: slideFromLeft 0.6s ease-out 0.2s forwards;
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, #4361ee, #9d50bb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .title-underline {
+        width: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #4361ee, #9d50bb, #2ec4b6);
+        border-radius: 2px;
+        margin-bottom: 25px;
+        animation: expandWidth 0.8s ease-out 0.3s forwards;
+    }
+
+    .section-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #6c757d;
+        max-width: 900px;
+        margin: 0 auto;
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: slideFromLeft 0.6s ease-out 0.4s forwards;
+    }
+
+    /* Features Grid */
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    /* Feature Card Styles */
+    .feature-card-wrapper {
+        opacity: 0;
+        transform: translateX(-50px);
+        animation: slideFromLeft 0.8s ease-out forwards;
+        height: 100%;
+    }
+
+    .feature-card {
+        position: relative;
+        background: white;
+        border-radius: 24px;
+        padding: 40px 30px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+        border: 1px solid rgba(67, 97, 238, 0.1);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 30px 50px rgba(67, 97, 238, 0.15);
+        border-color: rgba(67, 97, 238, 0.3);
+    }
+
+    /* Card Border Animation - Left to Right */
+    .card-border-left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #4361ee, #9d50bb, #2ec4b6);
+        transition: width 0.6s ease-out;
+    }
+
+    .feature-card:hover .card-border-left {
+        width: 100%;
+    }
+
+    /* Icon Styles */
+    .feature-icon-wrapper {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin-bottom: 25px;
+    }
+
+    .feature-icon {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #4361ee15 0%, #9d50bb15 100%);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: #4361ee;
+        transition: all 0.4s ease;
+        z-index: 2;
+    }
+
+    .icon-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        background: radial-gradient(circle, rgba(67, 97, 238, 0.2) 0%, transparent 70%);
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+        background: linear-gradient(135deg, #4361ee, #9d50bb);
+        color: white;
+        transform: scale(0.9) rotate(5deg);
+    }
+
+    .feature-card:hover .icon-glow {
+        opacity: 1;
+        animation: pulse 2s infinite;
+    }
+
+    /* Content Styles */
+    .feature-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .feature-content h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #1a1a2e;
+        position: relative;
+        display: inline-block;
+    }
+
+    .feature-content h3::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #4361ee, #9d50bb);
+        transition: width 0.4s ease;
+    }
+
+    .feature-card:hover h3::after {
+        width: 50px;
+    }
+
+    .feature-content p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 25px;
+        font-size: 1rem;
+    }
+
+    /* Feature Link */
+    .feature-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: #4361ee;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-top: auto;
+        padding: 10px 0;
+        position: relative;
+        width: fit-content;
+    }
+
+    .feature-link span {
+        position: relative;
+    }
+
+    .feature-link span::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4361ee, #9d50bb);
+        transition: width 0.3s ease;
+    }
+
+    .feature-link:hover span::after {
+        width: 100%;
+    }
+
+    .feature-link i {
+        transition: transform 0.3s ease;
+    }
+
+    .feature-link:hover i {
+        transform: translateX(8px);
+    }
+ @keyframes expandWidth {
+        0% {
+            width: 0;
+            opacity: 0;
+        }
+        100% {
+            width: 120px;
+            opacity: 1;
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.5;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0;
+        }
+    }
+
+    /* Staggered Animation Delays for Cards */
+    .feature-card-wrapper:nth-child(1) { animation-delay: 0.2s; }
+    .feature-card-wrapper:nth-child(2) { animation-delay: 0.4s; }
+    .feature-card-wrapper:nth-child(3) { animation-delay: 0.6s; }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .features-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .section-title {
+            font-size: 2.4rem;
+        }
+        
+        .cta-content {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .features-section {
+            padding: 70px 0;
+        }
+        
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+        
+        .section-description {
+            font-size: 1rem;
+        }
+        
+        .feature-card {
+            padding: 30px 25px;
+        }
+        
+        .cta-wrapper {
+            padding: 30px 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .features-container {
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+        }
+    }
+
+    /* Optional: Add AOS-like animation on scroll */
+    @media (prefers-reduced-motion: no-preference) {
+        .left-to-right-card {
+            animation: slideFromLeft 0.8s ease-out forwards;
+        }
+    }
     @media (max-width: 768px) {
         .partner-logo-container {
             height: 140px;
@@ -936,55 +1278,85 @@
     </div>
 </section>
 
-<!-- Features Section with Animated Cards -->
-<section class="section">
-    <div class="container">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Why Choose DONO TECH</h2>
-            <p>Empowering Students With Real-World IT Skills, Internships & Career-Ready Training At DONOTECH Solutions, we bridge the gap between academic learning and industry expectations. Our mission is to help students transform their theoretical knowledge into hands-on practical skills through structured training programs, internship opportunities, real-time projects, career guidance, and placement-driven support.</p>
+<!-- Features Section with Animated Cards - Left to Right Flow -->
+<section class="features-section">
+    <div class="features-container">
+        <!-- Section Title with Left-to-Right Reveal -->
+        <div class="section-header left-to-right">
+            <span class="section-badge">Why Us</span>
+            <h2 class="section-title">Why Choose <span class="gradient-text">DONO TECH</span></h2>
+            <div class="title-underline left-to-right"></div>
+            <p class="section-description">
+                Empowering Students With Real-World IT Skills, Internships & Career-Ready Training. At DONOTECH Solutions, we bridge the gap between academic learning and industry expectations. Our mission is to help students transform their theoretical knowledge into hands-on practical skills through structured training programs, internship opportunities, real-time projects, career guidance, and placement-driven support.
+            </p>
         </div>
-        
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- Features Grid with Sequential Left-to-Right Animation -->
+        <div class="features-grid">
+            <!-- Feature Card 1 - Left -->
+            <div class="feature-card-wrapper left-to-right-card" style="animation-delay: 0.2s;">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-handshake"></i>
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="icon-glow"></div>
                     </div>
-                    <h3>Industry Partnerships</h3>
-                    <p>Our training modules, internship pathways, and project structures are built based on current market needs, ensuring every learner gains relevant, job-ready skills.</p>
-                    <a href="#" class="feature-link">
-                        Learn more <i class="fas fa-arrow-right ms-2"></i>
-                    </a>
+                    <div class="feature-content">
+                        <h3>Industry Partnerships</h3>
+                        <p>Our training modules, internship pathways, and project structures are built based on current market needs, ensuring every learner gains relevant, job-ready skills.</p>
+                        <a href="#" class="feature-link">
+                            <span>Learn more</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <!-- Animated Border -->
+                    <div class="card-border-left"></div>
                 </div>
             </div>
-            
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+
+            <!-- Feature Card 2 - Center (slightly delayed) -->
+            <div class="feature-card-wrapper left-to-right-card" style="animation-delay: 0.4s;">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-tie"></i>
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="icon-glow"></div>
                     </div>
-                    <h3>Expert Mentors</h3>
-                    <p>Get trained by mentors with hands-on industry knowledge, real project exposure, and strong technical expertise.</p>
-                    <a href="#" class="feature-link">
-                        Meet our mentors <i class="fas fa-arrow-right ms-2"></i>
-                    </a>
+                    <div class="feature-content">
+                        <h3>Expert Mentors</h3>
+                        <p>Get trained by mentors with hands-on industry knowledge, real project exposure, and strong technical expertise. Learn from professionals who have shaped the tech landscape.</p>
+                        <a href="#" class="feature-link">
+                            <span>Meet our mentors</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="card-border-left"></div>
                 </div>
             </div>
-            
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+
+            <!-- Feature Card 3 - Right (further delayed) -->
+            <div class="feature-card-wrapper left-to-right-card" style="animation-delay: 0.6s;">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-laptop-code"></i>
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="icon-glow"></div>
                     </div>
-                    <h3>Hands-on Training</h3>
-                    <p>Practical, project-based learning that prepares you for real workplace challenges.</p>
-                    <a href="#" class="feature-link">
-                        View projects <i class="fas fa-arrow-right ms-2"></i>
-                    </a>
+                    <div class="feature-content">
+                        <h3>Hands-on Training</h3>
+                        <p>Practical, project-based learning that prepares you for real workplace challenges. Work on live projects that simulate actual industry scenarios and workflows.</p>
+                        <a href="#" class="feature-link">
+                            <span>View projects</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="card-border-left"></div>
                 </div>
             </div>
         </div>
-    </div>
 </section>
 
 <!-- Enhanced Collaborations Section -->
