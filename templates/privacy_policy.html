@@ -516,7 +516,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Privacy Policy</h1>
-            <p class="hero-subtitle">Your trust and privacy are our top priority at DonoTech Solutions</p>
+            <p class="hero-subtitle">Your trust and privacy are our top priority at Dono Tech Solutions</p>
             
         </div>
     </section>
@@ -525,7 +525,7 @@
     <main class="main-container">
         <div class="content-card">
             <p class="intro-text">
-                At <strong>DonoTech Solutions</strong>, we value your trust. This Privacy Policy explains how we collect, use, protect, and manage your personal information when you interact with our website, enroll in training programs, apply for internships, or seek placement assistance.
+                At <strong>Dono Tech Solutions</strong>, we value your trust. This Privacy Policy explains how we collect, use, protect, and manage your personal information when you interact with our website, enroll in training programs, apply for internships, or seek placement assistance.
             </p>
 
             <div class="policy-section">
@@ -534,7 +534,7 @@
                     <h2>About DonoTech Solutions</h2>
                 </div>
                 <div class="policy-content">
-                    <p>DonoTech Solutions provides industry-focused IT training, real-time project experience, internships, mentorship programs, and placement support to help students and professionals build practical career skills.</p>
+                    <p>Dono Tech Solutions provides industry-focused IT training, real-time project experience, internships, mentorship programs, and placement support to help students and professionals build practical career skills.</p>
                 </div>
             </div>
 
@@ -548,13 +548,11 @@
                     <ul class="policy-list">
                         <li>Name, email address, and phone number</li>
                         <li>Educational qualifications and career interests</li>
-                        <li>Resume or project details (if shared)</li>
                         <li>Messages submitted via contact forms</li>
                     </ul>
                     
                     <p class="section-subtitle">Automatically Collected Information:</p>
                     <ul class="policy-list">
-                        <li>IP address and browser type</li>
                         <li>Device information</li>
                         <li>Pages visited and interaction data</li>
                         <li>Cookies and analytics data</li>
@@ -586,7 +584,7 @@
                     <h2>Communication Policy</h2>
                 </div>
                 <div class="policy-content">
-                    <p>By submitting your contact details, you agree that DonoTech Solutions may contact you via phone, SMS, WhatsApp, or email regarding educational programs, internships, or placement opportunities. You may opt out of non-essential communications at any time.</p>
+                    <p>By submitting your contact details, you agree that Dono Tech Solutions may contact you via phone, SMS, WhatsApp, or email regarding educational programs, internships, or placement opportunities. You may opt out of non-essential communications at any time.</p>
                 </div>
             </div>
 
@@ -656,7 +654,7 @@
                     <h2>Third-Party Links</h2>
                 </div>
                 <div class="policy-content">
-                    <p>Our website may contain links to external websites. DonoTech Solutions is not responsible for the privacy practices of those sites.</p>
+                    <p>Our website may contain links to external websites. Dono Tech Solutions is not responsible for the privacy practices of those sites.</p>
                 </div>
             </div>
 
@@ -693,50 +691,5 @@
             </div>
         </div>
     </main>
-
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
-    </a>
-
-    <script>
-        // Back to Top Button
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Add smooth scrolling to all anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if(this.getAttribute('href') === '#') return;
-                
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId) {
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-    </script>
 
 {% endblock %}
