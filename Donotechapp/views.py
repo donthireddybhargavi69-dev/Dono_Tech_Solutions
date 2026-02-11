@@ -4,12 +4,16 @@ from django.contrib import messages
 from .models import Year, CourseItem, Student, CourseProgress
 from .forms import CourseForm
 from django.contrib.admin.views.decorators import staff_member_required
+from django.shortcuts import render
 
 @login_required
 def mycourses(request):
     student = get_object_or_404(Student, user=request.user)
     courses = student.courses_registered.all().select_related('semester__year')
     return render(request, 'my_courses.html', {'courses': courses})
+
+def privacy_policy(request):
+    return render(request, 'privacy_policy.html')
     
 def programs(request):
     return render(request, 'programs.html')
@@ -350,7 +354,3 @@ def contact_success(request):
     return render(request, 'contact-success.html')
 
 
-from django.shortcuts import render
-
-def privacy_policy(request):
-    return render(request, 'privacy_policy.html')
