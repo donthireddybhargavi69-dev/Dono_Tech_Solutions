@@ -415,6 +415,68 @@ Get in touch with DonoTech Solutions for admissions, placement assistance, inter
             font-size: 0.9rem;
         }
     }
+    /* Location Section Styling */
+.locations-section .card {
+    position: relative;
+    overflow: hidden;
+}
+
+.location-box {
+    padding: 1.5rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.4s ease;
+    height: 100%;
+}
+
+.location-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.location-box h3 {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.location-box p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.location-box strong {
+    color: var(--dark);
+    font-weight: 700;
+}
+
+.map-container {
+    margin-top: 1rem;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 250px;
+    border: 0;
+    transition: transform 0.4s ease;
+}
+
+.location-box:hover iframe {
+    transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .location-box {
+        margin-bottom: 2rem;
+    }
+}
+
 </style>
 
 <section class="contact-hero text-center py-5 mb-5">
@@ -463,6 +525,58 @@ Get in touch with DonoTech Solutions for admissions, placement assistance, inter
     </div>
 </section>
 
+<section class="container mb-5 locations-section">
+    <div class="card shadow-sm p-4 p-lg-5">
+        <h2 class="mb-5 text-center">Our Locations</h2>
+
+        <div class="row">
+
+            <!-- Hyderabad Office -->
+            <div class="col-lg-6 mb-4">
+                <div class="location-box">
+                    <h3>Hyderabad Office</h3>
+                    <p><strong>DONO TECH SOLUTIONS</strong></p>
+                    <p>
+                        2nd Floor, Above Naveen Food Court,<br>
+                        Sardar Patel Nagar, Near JNTU Metro Station,<br>
+                        Kukatpally, Hyderabad, Telangana – 500085
+                    </p>
+
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps?q=2nd+floor+Above+Naveen+Food+Court+Sardar+Patel+Nagar+Near+JNTU+Metro+Station+Kukatpally+Hyderabad+Telangana+500085&output=embed"
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kadapa Office -->
+            <div class="col-lg-6 mb-4">
+                <div class="location-box">
+                    <h3>Kadapa Office</h3>
+                    <p><strong>DONO TECH SOLUTIONS</strong></p>
+                    <p>
+                        21/77-4, 4th Floor, Trunk Road,<br>
+                        MRGR Towers, 7 Roads Circle,<br>
+                        Cuddapah (U) Village, Cuddapah Mandal,<br>
+                        YSR Kadapa District – 516001
+                    </p>
+
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps?q=21/77-4+4th+Floor+Trunk+Road+MRGR+Towers+7+Roads+Circle+Cuddapah+YSR+Kadapa+516001&output=embed"
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 
 <!-- Font Awesome for icons -->
